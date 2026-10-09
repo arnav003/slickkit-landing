@@ -6,11 +6,11 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/pdf",
-        destination: "https://slickkit-pdf.vercel.app/pdf",
+        destination: "https://slickkit-pdf.vercel.app",
       },
       {
         source: "/pdf/:path*",
-        destination: "https://slickkit-pdf.vercel.app/pdf/:path*",
+        destination: "https://slickkit-pdf.vercel.app/:path*",
       },
     ];
   },
