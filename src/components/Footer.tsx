@@ -30,10 +30,10 @@ export function Footer() {
             <div className="double-bezel-core p-8 sm:p-12 lg:p-14 bg-gradient-to-br from-white via-white to-emerald-50/70 dark:from-[#12151a] dark:via-[#12151a] dark:to-emerald-950/25 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
               <div className="max-w-xl">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.1] mb-3">
-                  Experience instant, local-first document tools today.
+                  Handle your confidential documents with confidence.
                 </h2>
                 <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                  Launch SlickKit PDF directly in your browser with zero account registration, zero file uploads, and full offline capability.
+                  Open SlickKit PDF right in your browser. Zero cloud uploads, no account sign-up required, and no recurring monthly subscriptions.
                 </p>
               </div>
 
@@ -52,13 +52,10 @@ export function Footer() {
                 </Link>
 
                 <a
-                  href="https://github.com/slickkit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 active:scale-[0.98]"
+                  href="#tools"
+                  className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 active:scale-[0.98]"
                 >
-                  <span>Inspect Source</span>
-                  <ArrowUpRight className="w-4 h-4 text-slate-400" strokeWidth={1.5} />
+                  <span>Explore Suite</span>
                 </a>
               </div>
             </div>
@@ -94,14 +91,14 @@ export function Footer() {
             </div>
 
             <p className="text-sm text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
-              An independent software studio crafting high-speed, local-first browser utilities that respect your RAM, your processor, and your privacy.
+              Private, subscription-free everyday file tools that work right on your computer. Safe for personal, financial, and confidential company documents.
             </p>
           </div>
 
           {/* Product Suite Column (4 Cols) */}
           <div className="md:col-span-4">
             <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-4">
-              Product Suite
+              Our Tools
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -111,7 +108,7 @@ export function Footer() {
                 >
                   <span>SlickKit PDF</span>
                   <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300">
-                    LIVE
+                    AVAILABLE NOW
                   </span>
                 </Link>
               </li>
@@ -142,10 +139,10 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Architecture & Governance Column (3 Cols) */}
+          {/* Promise & Privacy Column (3 Cols) */}
           <div className="md:col-span-3">
             <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-4">
-              Studio &amp; Governance
+              Privacy &amp; Promise
             </h3>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -153,7 +150,7 @@ export function Footer() {
                   href="#architecture"
                   className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                 >
-                  Benchmark &amp; Architecture
+                  How On-Device Privacy Works
                 </a>
               </li>
               <li>
@@ -161,7 +158,7 @@ export function Footer() {
                   href="#manifesto"
                   className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                 >
-                  Local-First Manifesto
+                  Why No Subscriptions
                 </a>
               </li>
               <li>
@@ -169,18 +166,7 @@ export function Footer() {
                   href="#manifesto"
                   className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                 >
-                  Zero-Telemetry Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/slickkit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors inline-flex items-center gap-1"
-                >
-                  <span>GitHub Open Source</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-60" strokeWidth={1.5} />
+                  Zero-Upload Privacy Guarantee
                 </a>
               </li>
             </ul>
@@ -190,7 +176,7 @@ export function Footer() {
         {/* Bottom Bar: Copyright + Live Browser Offline/Online Readiness */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
           <p>
-            © {new Date().getFullYear()} SlickKit Studio. Client-side WebAssembly and Web Workers.
+            © {new Date().getFullYear()} SlickKit Studio. Private everyday tools that keep your files on your device.
           </p>
 
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/80 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 font-mono text-[11px]">
@@ -198,14 +184,14 @@ export function Footer() {
               <>
                 <Wifi className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" strokeWidth={1.5} />
                 <span className="text-slate-700 dark:text-slate-300">
-                  RAM Execution Ready (Offline Capable)
+                  100% On-Device (Works Offline)
                 </span>
               </>
             ) : (
               <>
                 <WifiOff className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" strokeWidth={1.5} />
                 <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
-                  Air-Gapped Offline Mode Active
+                  Offline Mode Active
                 </span>
               </>
             )}

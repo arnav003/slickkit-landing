@@ -56,7 +56,7 @@ export function Header() {
               </span>
             </Link>
 
-            {/* Center: Single-Line Desktop Navigation */}
+            {/* Center: Single-Line Consumer-Friendly Navigation */}
             <nav
               aria-label="Primary"
               className="hidden md:flex items-center gap-7 text-[13px] font-medium text-slate-600 dark:text-slate-300"
@@ -65,28 +65,25 @@ export function Header() {
                 href="#tools"
                 className="hover:text-slate-950 dark:hover:text-white transition-colors duration-300"
               >
-                Product Suite
+                Our Tools
               </a>
               <a
                 href="#architecture"
                 className="hover:text-slate-950 dark:hover:text-white transition-colors duration-300"
               >
-                Architecture
+                How It Works
               </a>
               <a
                 href="#manifesto"
                 className="hover:text-slate-950 dark:hover:text-white transition-colors duration-300"
               >
-                Manifesto
+                Why SlickKit
               </a>
               <a
-                href="https://github.com/slickkit"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 hover:text-slate-950 dark:hover:text-white transition-colors duration-300"
+                href="#manifesto"
+                className="hover:text-slate-950 dark:hover:text-white transition-colors duration-300"
               >
-                <span>GitHub</span>
-                <ArrowUpRight className="w-3.5 h-3.5 opacity-60" strokeWidth={1.5} />
+                Lifetime Access
               </a>
             </nav>
 
@@ -97,7 +94,7 @@ export function Header() {
                 type="button"
                 className="w-8 h-8 rounded-full flex items-center justify-center border border-slate-200/80 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/60 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-300 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
                 aria-label="Switch color theme"
-                title={theme === "dark" ? "Switch to daylight mode" : "Switch to obsidian mode"}
+                title={theme === "dark" ? "Switch to daylight mode" : "Switch to dark mode"}
               >
                 {theme === "dark" ? (
                   <Sun className="w-3.5 h-3.5 text-amber-400" strokeWidth={1.5} />
@@ -165,21 +162,14 @@ export function Header() {
           <div className="double-bezel-shell">
             <div className="double-bezel-core p-5 space-y-3 backdrop-blur-2xl">
               {[
-                { label: "Product Suite", href: "#tools", delay: "delay-75" },
-                { label: "Architecture", href: "#architecture", delay: "delay-100" },
-                { label: "Manifesto", href: "#manifesto", delay: "delay-150" },
-                {
-                  label: "GitHub Repository",
-                  href: "https://github.com/slickkit",
-                  external: true,
-                  delay: "delay-200",
-                },
+                { label: "Our Tools", href: "#tools", delay: "delay-75" },
+                { label: "How It Works", href: "#architecture", delay: "delay-100" },
+                { label: "Why SlickKit", href: "#manifesto", delay: "delay-150" },
+                { label: "Lifetime Access", href: "#manifesto", delay: "delay-200" },
               ].map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  target={item.external ? "_blank" : undefined}
-                  rel={item.external ? "noopener noreferrer" : undefined}
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between py-2.5 px-3 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100/80 dark:hover:bg-slate-800/60 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
                     mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
