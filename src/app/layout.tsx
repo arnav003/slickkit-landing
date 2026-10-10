@@ -18,6 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.slickkit.dev"),
   title: "SlickKit | Private, Instant Everyday Tools. Zero Cloud Uploads.",
   description:
     "Everyday PDF, image, and media tools that work privately on your own computer. Edit confidential contracts, financial statements, and personal files with zero cloud uploads and no monthly subscriptions.",
@@ -35,8 +36,18 @@ export const metadata: Metadata = {
     title: "SlickKit | Private, Instant Everyday Tools. Zero Cloud Uploads.",
     description:
       "Everyday file tools that keep your documents yours. Edit confidential PDFs, financial reports, and photos privately on your device with no subscriptions.",
-    url: "https://slickkit.dev",
+    url: "https://www.slickkit.dev",
     siteName: "SlickKit",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "SlickKit | Private, Instant Everyday Tools. Zero Cloud Uploads.",
+      },
+    ],
+    locale: "en_US",
     type: "website",
   },
   twitter: {
@@ -44,6 +55,7 @@ export const metadata: Metadata = {
     title: "SlickKit | Private, Instant Everyday Tools. Zero Cloud Uploads.",
     description:
       "Everyday file tools that keep your documents yours. Edit confidential PDFs, financial reports, and photos privately on your device with no subscriptions.",
+    images: ["/og-image.png"],
   },
 };
 
