@@ -11,38 +11,47 @@ export default {
       colors: {
         canvas: {
           DEFAULT: "var(--background)",
-          dark: "#09090b",
-          light: "#fafafa",
+          light: "#F6F8FA",
+          dark: "#0B0D10",
         },
         surface: {
           DEFAULT: "var(--card)",
           elevated: "var(--elevated)",
         },
-        tint: {
-          card: "var(--tint-card)",
-          border: "var(--tint-border)",
-        },
-        primary: {
-          DEFAULT: "#4ade80",
-          hover: "#22c55e",
-          foreground: "#052415",
-        },
-        border: {
-          subtle: "var(--border-subtle)",
-          active: "var(--border-active)",
+        accent: {
+          DEFAULT: "#059669",
+          light: "#10B981",
+          tint: "#ECFDF5",
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "Inter", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
-        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
+        sans: [
+          "var(--font-sans, 'Plus Jakarta Sans')",
+          "'Plus Jakarta Sans'",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "'Segoe UI'",
+          "sans-serif",
+        ],
+        mono: [
+          "var(--font-mono, 'JetBrains Mono')",
+          "'JetBrains Mono'",
+          "ui-monospace",
+          "SFMono-Regular",
+          "monospace",
+        ],
       },
       boxShadow: {
-        glow: "0 0 25px rgba(74, 222, 128, 0.15)",
-        "glow-lg": "0 0 40px rgba(74, 222, 128, 0.25)",
+        "bezel-light":
+          "0 1px 2px rgba(15, 23, 42, 0.03), 0 16px 40px -12px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9)",
+        "bezel-hover":
+          "0 4px 12px rgba(15, 23, 42, 0.04), 0 24px 48px -12px rgba(5, 150, 105, 0.09), inset 0 1px 0 rgba(255, 255, 255, 1)",
+        "island-nav":
+          "0 12px 36px -8px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.85)",
       },
-      borderRadius: {
-        card: "1rem", // 16px
-        subcard: "0.75rem", // 12px
+      transitionTimingFunction: {
+        spring: "cubic-bezier(0.32, 0.72, 0, 1)",
+        outExpo: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

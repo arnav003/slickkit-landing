@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "dark" | "light";
+type Theme = "light" | "dark";
 
 interface ThemeContextType {
   theme: Theme;
@@ -11,31 +11,34 @@ interface ThemeContextType {
 }
 
 const ThemeContext = createContext<ThemeContextType>({
-  theme: "dark",
+  theme: "light",
   toggleTheme: () => {},
   setTheme: () => {},
 });
 
+const STORAGE_KEY = "slickkit-daylight-theme";
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
+  const [theme, setThemeState] = useState<Theme>("light");
 
   useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem("slickkit-theme") as Theme | null;
-    if (stored === "dark" || stored === "light") {
+    const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
+    if (stored === "light" || stored === "dark") {
       setThemeState(stored);
       document.documentElement.classList.toggle("dark", stored === "dark");
     } else {
-      // Default to dark mode native as defined in DESIGN.md
-      setThemeState("dark");
-      document.documentElement.classList.add("dark");
+      setThemeState("light");
+      document.documentElement.classList.remove("dark");
     }
   }, []);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
-    localStorage.setItem("slickkit-theme", newTheme);
+    try {
+      localStorage.setItem(STORAGE_KEY, newTheme);
+    } catch {
+      // ignore storage errors
+    }
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
 
