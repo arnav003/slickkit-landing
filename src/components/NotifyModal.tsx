@@ -81,25 +81,25 @@ export function NotifyModal({ isOpen, toolName, onClose }: NotifyModalProps) {
                 id="notify-modal-title"
                 className="text-xl font-bold tracking-[-0.02em] text-slate-950 dark:text-white mb-2"
               >
-                Early access confirmed
+                You are on the early access list
               </h3>
               <p className="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                We will send one release note to{" "}
+                We will send one email to{" "}
                 <span className="font-mono font-medium text-slate-900 dark:text-white">
                   {email}
                 </span>{" "}
-                as soon as{" "}
+                the moment{" "}
                 <strong className="text-slate-900 dark:text-white">
                   {toolName}
                 </strong>{" "}
-                ships.
+                is ready to use.
               </p>
               <button
                 onClick={handleClose}
                 type="button"
                 className="rounded-full bg-slate-950 dark:bg-white text-white dark:text-slate-950 font-semibold px-6 py-2.5 text-xs transition-all active:scale-[0.98]"
               >
-                Return to Studio
+                Back to Tools
               </button>
             </div>
           ) : (
@@ -113,10 +113,10 @@ export function NotifyModal({ isOpen, toolName, onClose }: NotifyModalProps) {
                     id="notify-modal-title"
                     className="text-lg font-bold tracking-[-0.02em] text-slate-950 dark:text-white"
                   >
-                    Early Access: {toolName}
+                    Get Notified: {toolName}
                   </h3>
                   <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Receive a single notification when the local build is ready.
+                    Be the first to know when this private tool launches.
                   </p>
                 </div>
               </div>
@@ -127,14 +127,14 @@ export function NotifyModal({ isOpen, toolName, onClose }: NotifyModalProps) {
                     htmlFor="notify-email"
                     className="text-xs font-semibold text-slate-800 dark:text-slate-200"
                   >
-                    Email address
+                    Your email address
                   </label>
                   <input
                     id="notify-email"
                     name="email"
                     type="email"
                     required
-                    placeholder="you@domain.com"
+                    placeholder="name@company.com"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -148,7 +148,7 @@ export function NotifyModal({ isOpen, toolName, onClose }: NotifyModalProps) {
                     id="notify-email-helper"
                     className="text-xs text-slate-500 dark:text-slate-400"
                   >
-                    Stored locally. Zero marketing newsletters, ever.
+                    One single email when ready. Zero spam or newsletters.
                   </span>
                   {error && (
                     <span

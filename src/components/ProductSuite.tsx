@@ -10,7 +10,6 @@ import {
   ShieldCheck,
   ArrowUpRight,
   Bell,
-  Cpu,
   RotateCw,
   Scissors,
   Lock,
@@ -28,7 +27,7 @@ export function ProductSuite() {
   const [rotatedPage, setRotatedPage] = useState<number>(2);
 
   // Interactive state for SlickKit Image card preview
-  const [avifRatio, setAvifRatio] = useState<number>(88);
+  const [avifRatio, setAvifRatio] = useState<number>(85);
 
   // Interactive state for SlickKit Vault card preview
   const [exifStripped, setExifStripped] = useState<boolean>(true);
@@ -38,18 +37,18 @@ export function ProductSuite() {
     setNotifyModalOpen(true);
   };
 
-  const compressedKb = Math.round(4820 * (1 - avifRatio / 100));
+  const compressedKb = Math.round(4800 * (1 - avifRatio / 100));
 
   return (
     <section id="tools" className="py-28 lg:py-36 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header: Vertical Stack (No Eyebrow per Eyebrow Restraint rule, No Split-Header) */}
+        {/* Section Header: Vertical Stack */}
         <Reveal className="mb-14 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.08] mb-4">
-            The Product Suite
+            One simple toolkit for your daily files.
           </h2>
-          <p className="max-w-[56ch] text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Purpose-built utility applications engineered to execute one workflow with hardware speed, zero network latency, and complete privacy.
+          <p className="max-w-[58ch] text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+            Fast, easy-to-use utilities for your everyday documents, photos, and media. Everything happens right on your own computer so your confidential files never get uploaded anywhere.
           </p>
         </Reveal>
 
@@ -71,19 +70,19 @@ export function ProductSuite() {
                           SlickKit PDF
                         </h3>
                         <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          Document Utility Engine
+                          Everyday &amp; Confidential PDFs
                         </span>
                       </div>
                     </div>
 
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-600/25">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
-                      LIVE
+                      AVAILABLE NOW
                     </span>
                   </div>
 
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-[58ch] mb-6">
-                    Merge, split, losslessly compress, and reorder sensitive PDF documents directly inside an isolated browser Web Worker without uploading a single byte.
+                    Combine, split, shrink, and rearrange PDFs in seconds. Perfect for financial statements, client contracts, invoices, and tax forms that you cannot upload to public websites.
                   </p>
 
                   {/* Interactive Mini PDF Workbench Preview */}
@@ -101,13 +100,13 @@ export function ProductSuite() {
                                 : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
                             }`}
                           >
-                            {mode}
+                            {mode === "compress" ? "Shrink Size" : mode === "merge" ? "Combine" : "Rotate Pages"}
                           </button>
                         ))}
                       </div>
                       <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400">
-                        {pdfMode === "compress" && "24.6 MB -> 6.1 MB (-75%)"}
-                        {pdfMode === "merge" && "4 Streams -> 1 Unified PDF"}
+                        {pdfMode === "compress" && "24 MB -> 6 MB (Ready for email)"}
+                        {pdfMode === "merge" && "4 Statements -> 1 Clean PDF"}
                         {pdfMode === "rotate" && "Click any page to rotate 90°"}
                       </span>
                     </div>
@@ -142,7 +141,7 @@ export function ProductSuite() {
                             </div>
                             <span className="mt-1.5 text-[10px] font-mono text-slate-400 group-hover/page:text-emerald-600 dark:group-hover/page:text-emerald-400 flex items-center gap-0.5">
                               <RotateCw className="w-2.5 h-2.5" strokeWidth={1.5} />
-                              <span>Page 0{page}</span>
+                              <span>Page {page}</span>
                             </span>
                           </button>
                         );
@@ -151,14 +150,14 @@ export function ProductSuite() {
                   </div>
                 </div>
 
-                {/* Bottom Specs + Island CTA */}
+                {/* Bottom Reassurance + Island CTA */}
                 <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400">
-                    <Cpu
+                  <div className="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+                    <ShieldCheck
                       className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"
                       strokeWidth={1.5}
                     />
-                    <span>pdf-lib + Web Worker Core</span>
+                    <span>Stays on your computer • Works offline</span>
                   </div>
 
                   <Link
@@ -178,7 +177,7 @@ export function ProductSuite() {
             </div>
           </Reveal>
 
-          {/* CELL 2 (5 Cols): SlickKit Image — Coming Soon with Studio Prism Photography */}
+          {/* CELL 2 (5 Cols): SlickKit Image — Coming Soon */}
           <Reveal className="lg:col-span-5" delayMs={120}>
             <div className="double-bezel-shell h-full">
               <div className="double-bezel-core h-full p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-shadow duration-500 hover:shadow-bezel-hover">
@@ -193,7 +192,7 @@ export function ProductSuite() {
                           SlickKit Image
                         </h3>
                         <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          WebGPU Optical Engine
+                          Private Photo Optimizer
                         </span>
                       </div>
                     </div>
@@ -207,7 +206,7 @@ export function ProductSuite() {
                   <div className="relative h-36 w-full rounded-2xl overflow-hidden mb-5 border border-slate-900/[0.06] dark:border-white/[0.06]">
                     <Image
                       src="/images/bento-webgpu-optics.jpg"
-                      alt="Optical glass prism refracting emerald light across an architectural grid representing WebGPU image compression"
+                      alt="Optical glass prism refracting emerald light across a clean white surface"
                       fill
                       sizes="(max-width: 1024px) 100vw, 40vw"
                       className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
@@ -215,14 +214,14 @@ export function ProductSuite() {
                   </div>
 
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
-                    Batch AVIF/WebP conversion, perceptual shrink, and neural background cutout accelerated by your local GPU.
+                    Shrink large photos for email attachments, convert formats in bulk, and remove backgrounds cleanly without sending personal or company images to the cloud.
                   </p>
 
-                  {/* Interactive Compression Ratio Preview */}
+                  {/* Interactive Photo Shrink Slider */}
                   <div className="rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 p-3.5 mb-6">
                     <div className="flex items-center justify-between text-xs font-mono mb-2">
                       <span className="text-slate-500 dark:text-slate-400">
-                        AVIF Target Reduction: {avifRatio}%
+                        Shrink Photo Size: {avifRatio}%
                       </span>
                       <span className="font-semibold text-emerald-700 dark:text-emerald-400">
                         4.8 MB -&gt; {compressedKb} KB
@@ -234,15 +233,15 @@ export function ProductSuite() {
                       max={94}
                       value={avifRatio}
                       onChange={(e) => setAvifRatio(Number(e.target.value))}
-                      aria-label="Adjust AVIF compression ratio"
+                      aria-label="Adjust photo size reduction"
                       className="w-full accent-emerald-600 cursor-pointer h-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg"
                     />
                   </div>
                 </div>
 
                 <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] flex items-center justify-between gap-3">
-                  <span className="text-xs font-mono text-slate-500 dark:text-slate-400 truncate">
-                    WebGPU + Canvas In-RAM
+                  <span className="text-xs font-medium text-slate-500 dark:text-slate-400 truncate">
+                    Full Visual Quality • Zero Uploads
                   </span>
 
                   <button
@@ -260,7 +259,7 @@ export function ProductSuite() {
             </div>
           </Reveal>
 
-          {/* CELL 3 (5 Cols): SlickKit Media — FFmpeg WASM Engine */}
+          {/* CELL 3 (5 Cols): SlickKit Media — Video & Audio Trimmer */}
           <Reveal className="lg:col-span-5" delayMs={160}>
             <div className="double-bezel-shell h-full">
               <div className="double-bezel-core h-full p-6 sm:p-8 flex flex-col justify-between transition-shadow duration-500 hover:shadow-bezel-hover">
@@ -275,7 +274,7 @@ export function ProductSuite() {
                           SlickKit Media
                         </h3>
                         <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          Audio & Video Engine
+                          Quick Video &amp; Audio Trimmer
                         </span>
                       </div>
                     </div>
@@ -286,7 +285,7 @@ export function ProductSuite() {
                   </div>
 
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                    Instant frame-accurate video trimming, lossless audio extraction, and high-framerate GIF transcoding powered by multi-threaded FFmpeg WebAssembly.
+                    Trim screen recordings, save audio from recorded meetings, and turn clips into shareable GIFs in seconds without waiting for huge video files to upload.
                   </p>
 
                   {/* Tactile Timeline Scrubber Visual */}
@@ -294,9 +293,9 @@ export function ProductSuite() {
                     <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 mb-3">
                       <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200 font-medium">
                         <Scissors className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.5} />
-                        <span>00:04.12 - 00:18.40</span>
+                        <span>Clip: 00:04 - 00:18</span>
                       </span>
-                      <span>4K60 ProRes -&gt; MP4</span>
+                      <span>Meeting Recording -&gt; MP4</span>
                     </div>
 
                     {/* Acoustic / Frame Bars */}
@@ -319,8 +318,8 @@ export function ProductSuite() {
                 </div>
 
                 <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] flex items-center justify-between gap-3">
-                  <span className="text-xs font-mono text-slate-500 dark:text-slate-400 truncate">
-                    FFmpeg WASM Multi-Thread
+                  <span className="text-xs font-medium text-slate-500 dark:text-slate-400 truncate">
+                    No Upload Wait • No File Size Caps
                   </span>
 
                   <button
@@ -338,7 +337,7 @@ export function ProductSuite() {
             </div>
           </Reveal>
 
-          {/* CELL 4 (7 Cols): SlickKit Vault — Client-Side Cryptography & Metadata Sanitizer */}
+          {/* CELL 4 (7 Cols): SlickKit Vault — File Lock & Hidden Details Cleaner */}
           <Reveal className="lg:col-span-7" delayMs={200}>
             <div className="double-bezel-shell h-full">
               <div className="double-bezel-core h-full p-6 sm:p-8 lg:p-9 flex flex-col justify-between transition-shadow duration-500 hover:shadow-bezel-hover">
@@ -353,7 +352,7 @@ export function ProductSuite() {
                           SlickKit Vault
                         </h3>
                         <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          Air-Gapped Cryptography & Sanitizer
+                          Document Lock &amp; Privacy Cleaner
                         </span>
                       </div>
                     </div>
@@ -364,10 +363,10 @@ export function ProductSuite() {
                   </div>
 
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-[58ch] mb-6">
-                    Lock confidential archives with authenticated AES-256-GCM browser cryptography and scrub hidden GPS, camera serials, and author metadata before sharing.
+                    Password-protect confidential files before sending them to clients, and automatically remove hidden location tags, author names, and edit history from your documents and photos.
                   </p>
 
-                  {/* Interactive Metadata Scrubber Toggle Plate */}
+                  {/* Interactive Privacy Cleaner Toggle Plate */}
                   <div className="rounded-2xl bg-slate-50/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 p-4 sm:p-5 mb-6">
                     <div className="flex flex-wrap items-center justify-between gap-2 pb-3.5 mb-3.5 border-b border-slate-200/70 dark:border-slate-800">
                       <div className="flex items-center gap-2 text-xs font-semibold text-slate-900 dark:text-white">
@@ -375,7 +374,7 @@ export function ProductSuite() {
                           className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"
                           strokeWidth={1.5}
                         />
-                        <span>Interactive Metadata Sanitizer Preview</span>
+                        <span>Hidden File Details Cleaner</span>
                       </div>
                       <button
                         type="button"
@@ -386,26 +385,26 @@ export function ProductSuite() {
                             : "bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300"
                         }`}
                       >
-                        {exifStripped ? "Sanitizer: ACTIVE" : "Sanitizer: BYPASSED"}
+                        {exifStripped ? "Privacy Cleaner: ON" : "Privacy Cleaner: OFF"}
                       </button>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs font-mono">
                       {[
                         {
-                          label: "GPS Coordinates",
-                          raw: "37.7749° N, 122.4194° W",
-                          clean: "0x00 STRIPPED",
+                          label: "Home / Office Location",
+                          raw: "New York, NY (Visible)",
+                          clean: "Removed",
                         },
                         {
-                          label: "Device Serial",
-                          raw: "A7R5-8849201-US",
-                          clean: "0x00 STRIPPED",
+                          label: "Author & Computer Name",
+                          raw: "Finance_MacBook_Pro",
+                          clean: "Removed",
                         },
                         {
-                          label: "Author / Revision",
-                          raw: "Legal_Counsel_v4",
-                          clean: "AES-256 SEALED",
+                          label: "Document Access",
+                          raw: "Anyone Can Open",
+                          clean: "Password Locked",
                         },
                       ].map((field) => (
                         <div
@@ -432,12 +431,12 @@ export function ProductSuite() {
                 </div>
 
                 <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-slate-400">
-                    <Cpu
+                  <div className="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+                    <ShieldCheck
                       className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"
                       strokeWidth={1.5}
                     />
-                    <span>Web Crypto API + Air-Gapped Keygen</span>
+                    <span>Safe for client &amp; financial sharing</span>
                   </div>
 
                   <button
