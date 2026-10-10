@@ -18,33 +18,32 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SlickKit Studio | Fast, In-Browser Utilities. Zero Cloud Uploads.",
+  title: "SlickKit | Private, Instant Everyday Tools. Zero Cloud Uploads.",
   description:
-    "Indie software studio crafting high-speed, local-first, privacy-respecting browser utilities. Pure client-side WebAssembly tools built to run in your device memory.",
+    "Everyday PDF, image, and media tools that work privately on your own computer. Edit confidential contracts, financial statements, and personal files with zero cloud uploads and no monthly subscriptions.",
   keywords: [
     "SlickKit",
-    "local-first",
-    "browser utilities",
-    "webassembly",
-    "privacy-first",
-    "pdf tools",
-    "client-side",
+    "private pdf tools",
+    "offline pdf editor",
+    "no subscription pdf",
+    "confidential document tools",
+    "local file tools",
     "zero cloud uploads",
   ],
   authors: [{ name: "SlickKit Studio" }],
   openGraph: {
-    title: "SlickKit Studio | Fast, In-Browser Utilities. Zero Cloud Uploads.",
+    title: "SlickKit | Private, Instant Everyday Tools. Zero Cloud Uploads.",
     description:
-      "Software that respects your RAM and your privacy. Pure client-side WebAssembly tools with zero cloud uploads.",
+      "Everyday file tools that keep your documents yours. Edit confidential PDFs, financial reports, and photos privately on your device with no subscriptions.",
     url: "https://slickkit.dev",
     siteName: "SlickKit",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SlickKit Studio | Fast, In-Browser Utilities. Zero Cloud Uploads.",
+    title: "SlickKit | Private, Instant Everyday Tools. Zero Cloud Uploads.",
     description:
-      "Software that respects your RAM and your privacy. Pure client-side WebAssembly tools with zero cloud uploads.",
+      "Everyday file tools that keep your documents yours. Edit confidential PDFs, financial reports, and photos privately on your device with no subscriptions.",
   },
 };
 
