@@ -4,24 +4,30 @@ import { ArrowLeft, FileQuestion } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-canvas text-zinc-900 dark:text-[#fafafa] p-4 text-center">
-      <div className="w-14 h-14 rounded-2xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500 mb-6">
-        <FileQuestion className="w-7 h-7" />
+    <div className="min-h-[100dvh] flex flex-col items-center justify-center bg-[#F6F8FA] dark:bg-[#0B0D10] text-slate-900 dark:text-white p-4 text-center">
+      <div className="double-bezel-shell max-w-md w-full">
+        <div className="double-bezel-core p-8 sm:p-10 flex flex-col items-center">
+          <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 mb-5">
+            <FileQuestion className="w-6 h-6" strokeWidth={1.5} />
+          </div>
+          <span className="text-[11px] font-mono uppercase tracking-[0.18em] px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800 text-slate-500 mb-3">
+            404 Not Found
+          </span>
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-[-0.03em] mb-2">
+            Route not found
+          </h1>
+          <p className="text-sm text-slate-600 dark:text-slate-400 max-w-xs mb-7 leading-relaxed">
+            The utility or page you requested does not exist at this address.
+          </p>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2.5 rounded-full bg-slate-950 dark:bg-white text-white dark:text-slate-950 font-semibold px-6 py-3 text-xs transition-all active:scale-[0.98]"
+          >
+            <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
+            <span>Return to Studio</span>
+          </Link>
+        </div>
       </div>
-      <span className="text-xs font-mono px-2.5 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 mb-3">
-        404 • NOT FOUND
-      </span>
-      <h1 className="text-2xl sm:text-3xl font-bold mb-2">Page Not Found</h1>
-      <p className="text-sm text-zinc-600 dark:text-[#a1a1aa] max-w-sm mb-6">
-        The tool or page you are looking for doesn&apos;t exist or has moved.
-      </p>
-      <Link
-        href="/"
-        className="inline-flex items-center gap-2 bg-[#4ade80] hover:bg-[#22c55e] text-[#052415] font-semibold rounded-full px-5 py-2.5 text-sm shadow-sm transition-all"
-      >
-        <ArrowLeft className="w-4 h-4" />
-        <span>Return to Studio Hub</span>
-      </Link>
     </div>
   );
 }

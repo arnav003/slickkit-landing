@@ -2,34 +2,32 @@ import React from "react";
 import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
 import { ProductSuite } from "../components/ProductSuite";
+import { ArchitectureBenchmark } from "../components/ArchitectureBenchmark";
 import { Manifesto } from "../components/Manifesto";
 import { Footer } from "../components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-canvas dark:bg-[#09090b] relative">
-      {/* Subtle grid pattern background */}
-      <div
-        className="absolute inset-0 bg-grid-pattern opacity-40 dark:opacity-30 pointer-events-none -z-10"
-        aria-hidden="true"
-      />
-
-      {/* Top Header */}
+    <div className="min-h-[100dvh] flex flex-col bg-[#F6F8FA] dark:bg-[#0B0D10] relative">
+      {/* Floating Fluid Island Header */}
       <Header />
 
       {/* Main Content Hub */}
-      <main className="flex-1">
-        {/* 1. Hero Section */}
+      <main id="main-content" className="flex-1">
+        {/* 1. Asymmetric Split Hero + Live In-RAM Verifier + Standards Strip */}
         <Hero />
 
-        {/* 2. Product Suite Grid */}
+        {/* 2. Asymmetric Bento Product Suite */}
         <ProductSuite />
 
-        {/* 3. The Studio Manifesto / Why Local-First */}
+        {/* 3. Interactive Pipeline Benchmark (Legacy Cloud vs Local Silicon) */}
+        <ArchitectureBenchmark />
+
+        {/* 4. Editorial Split Manifesto */}
         <Manifesto />
       </main>
 
-      {/* Footer & Bottom Status Bar */}
+      {/* 5. Closing Double-Bezel Banner & Studio Footer */}
       <Footer />
     </div>
   );
