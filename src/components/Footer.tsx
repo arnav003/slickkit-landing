@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { Github, Heart, Wifi, WifiOff } from "lucide-react";
+import { ArrowUpRight, Wifi, WifiOff } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 export function Footer() {
   const [isOnline, setIsOnline] = useState(true);
@@ -21,39 +22,95 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#09090b] transition-colors">
-      {/* Main Footer Links */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-          {/* Brand Col */}
-          <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-1.5">
-              <span className="font-bold text-lg tracking-tight text-zinc-900 dark:text-white">
-                SlickKit
+    <footer className="pt-8 pb-16 border-t border-slate-900/[0.06] dark:border-white/[0.06] bg-white/80 dark:bg-[#0B0D10]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Closing Double-Bezel Launch Banner */}
+        <Reveal className="mb-20 -mt-16">
+          <div className="double-bezel-shell">
+            <div className="double-bezel-core p-8 sm:p-12 lg:p-14 bg-gradient-to-br from-white via-white to-emerald-50/70 dark:from-[#12151a] dark:via-[#12151a] dark:to-emerald-950/25 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+              <div className="max-w-xl">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.1] mb-3">
+                  Experience instant, local-first document tools today.
+                </h2>
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                  Launch SlickKit PDF directly in your browser with zero account registration, zero file uploads, and full offline capability.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3.5 shrink-0">
+                <Link
+                  href="/pdf"
+                  className="group inline-flex items-center gap-3 rounded-full bg-slate-950 dark:bg-white text-white dark:text-slate-950 pl-6 pr-2 py-2 text-sm font-semibold shadow-[0_14px_30px_-8px_rgba(15,23,42,0.2)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-slate-800 dark:hover:bg-slate-100 active:scale-[0.98]"
+                >
+                  <span>Open PDF Toolkit</span>
+                  <span className="w-9 h-9 rounded-full bg-white/15 dark:bg-slate-950/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[1px] group-hover:scale-105">
+                    <ArrowUpRight
+                      className="w-4 h-4 text-emerald-400 dark:text-emerald-600"
+                      strokeWidth={1.75}
+                    />
+                  </span>
+                </Link>
+
+                <a
+                  href="https://github.com/slickkit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full px-5 py-3.5 text-sm font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition-all duration-300 active:scale-[0.98]"
+                >
+                  <span>Inspect Source</span>
+                  <ArrowUpRight className="w-4 h-4 text-slate-400" strokeWidth={1.5} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* Main Footer Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-slate-900/[0.06] dark:border-white/[0.06]">
+          {/* Brand Column (5 Cols) */}
+          <div className="md:col-span-5 space-y-4">
+            <div className="flex items-center gap-2.5">
+              <span
+                className="w-7 h-7 rounded-full bg-slate-900 dark:bg-white flex items-center justify-center"
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  className="w-3.5 h-3.5 text-white dark:text-slate-900"
+                >
+                  <path
+                    d="M4 6.5L10 3L16 6.5V13.5L10 17L4 13.5V6.5Z"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinejoin="round"
+                  />
+                  <circle cx="10" cy="10" r="2.2" className="fill-emerald-400 dark:fill-emerald-600" />
+                </svg>
               </span>
-              <span className="w-2 h-2 rounded-full bg-[#4ade80] shadow-[0_0_8px_#4ade80]" />
-              <span className="ml-2 text-xs font-mono text-zinc-500 dark:text-[#71717a]">
-                slickkit.dev
+              <span className="font-bold text-base tracking-[-0.03em] text-slate-950 dark:text-white">
+                SlickKit Studio
               </span>
             </div>
-            <p className="text-sm text-zinc-600 dark:text-[#a1a1aa] max-w-sm leading-relaxed">
-              An independent software studio building high-speed, local-first browser utilities. Respecting your RAM, your CPU, and your privacy.
+
+            <p className="text-sm text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
+              An independent software studio crafting high-speed, local-first browser utilities that respect your RAM, your processor, and your privacy.
             </p>
           </div>
 
-          {/* Tools Col */}
-          <div>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-3">
-              Tools
-            </h4>
-            <ul className="space-y-2 text-sm">
+          {/* Product Suite Column (4 Cols) */}
+          <div className="md:col-span-4">
+            <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-4">
+              Product Suite
+            </h3>
+            <ul className="space-y-2.5 text-sm">
               <li>
                 <Link
                   href="/pdf"
-                  className="text-zinc-600 dark:text-[#a1a1aa] hover:text-[#4ade80] transition-colors flex items-center gap-1.5"
+                  className="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors inline-flex items-center gap-2"
                 >
                   <span>SlickKit PDF</span>
-                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-[#4ade80]/20 text-[#22c55e] dark:text-[#4ade80]">
+                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300">
                     LIVE
                   </span>
                 </Link>
@@ -61,7 +118,7 @@ export function Footer() {
               <li>
                 <a
                   href="#tools"
-                  className="text-zinc-600 dark:text-[#a1a1aa] hover:text-zinc-900 dark:hover:text-white transition-colors"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                 >
                   SlickKit Image (Coming Soon)
                 </a>
@@ -69,7 +126,7 @@ export function Footer() {
               <li>
                 <a
                   href="#tools"
-                  className="text-zinc-600 dark:text-[#a1a1aa] hover:text-zinc-900 dark:hover:text-white transition-colors"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                 >
                   SlickKit Media (Planned)
                 </a>
@@ -77,7 +134,7 @@ export function Footer() {
               <li>
                 <a
                   href="#tools"
-                  className="text-zinc-600 dark:text-[#a1a1aa] hover:text-zinc-900 dark:hover:text-white transition-colors"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                 >
                   SlickKit Vault (Planned)
                 </a>
@@ -85,18 +142,34 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Studio Col */}
-          <div>
-            <h4 className="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500 mb-3">
-              Studio
-            </h4>
-            <ul className="space-y-2 text-sm">
+          {/* Architecture & Governance Column (3 Cols) */}
+          <div className="md:col-span-3">
+            <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-4">
+              Studio &amp; Governance
+            </h3>
+            <ul className="space-y-2.5 text-sm">
+              <li>
+                <a
+                  href="#architecture"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
+                >
+                  Benchmark &amp; Architecture
+                </a>
+              </li>
               <li>
                 <a
                   href="#manifesto"
-                  className="text-zinc-600 dark:text-[#a1a1aa] hover:text-[#4ade80] transition-colors"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
                 >
-                  Manifesto
+                  Local-First Manifesto
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#manifesto"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
+                >
+                  Zero-Telemetry Privacy Policy
                 </a>
               </li>
               <li>
@@ -104,59 +177,39 @@ export function Footer() {
                   href="https://github.com/slickkit"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-600 dark:text-[#a1a1aa] hover:text-[#4ade80] transition-colors flex items-center gap-1.5"
+                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors inline-flex items-center gap-1"
                 >
-                  <Github className="w-3.5 h-3.5" />
-                  <span>GitHub</span>
+                  <span>GitHub Open Source</span>
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-60" strokeWidth={1.5} />
                 </a>
-              </li>
-              <li>
-                <span className="text-zinc-400 dark:text-zinc-600 text-xs">
-                  Zero Telemetry Certified
-                </span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-[#71717a]">
-          <p>© {new Date().getFullYear()} SlickKit Studio. Built for speed and privacy.</p>
-          <p className="flex items-center gap-1 font-mono">
-            <span>Client-side WebAssembly & Web Workers</span>
+        {/* Bottom Bar: Copyright + Live Browser Offline/Online Readiness */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+          <p>
+            © {new Date().getFullYear()} SlickKit Studio. Client-side WebAssembly and Web Workers.
           </p>
-        </div>
-      </div>
 
-      {/* Persistent Status Bar (DESIGN.md Component #5) */}
-      <div className="border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-[#070709] px-4 py-2 sm:px-6 text-xs font-mono text-zinc-600 dark:text-zinc-400 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
-          <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4ade80] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4ade80]"></span>
-          </span>
-          <span className="font-medium text-zinc-800 dark:text-zinc-200">
-            All systems running locally
-          </span>
-          <span className="hidden sm:inline text-zinc-400 dark:text-zinc-600">•</span>
-          <span className="hidden sm:inline">RAM Execution Only • Zero Server Uploads</span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1 text-[11px]">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100/80 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 font-mono text-[11px]">
             {isOnline ? (
-              <span className="text-zinc-500 flex items-center gap-1">
-                <Wifi className="w-3 h-3 text-emerald-500" />
-                <span>ONLINE (READY OFFLINE)</span>
-              </span>
+              <>
+                <Wifi className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" strokeWidth={1.5} />
+                <span className="text-slate-700 dark:text-slate-300">
+                  RAM Execution Ready (Offline Capable)
+                </span>
+              </>
             ) : (
-              <span className="text-amber-500 dark:text-amber-400 flex items-center gap-1 font-semibold">
-                <WifiOff className="w-3 h-3" />
-                <span>100% OFFLINE ACTIVE</span>
-              </span>
+              <>
+                <WifiOff className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" strokeWidth={1.5} />
+                <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
+                  Air-Gapped Offline Mode Active
+                </span>
+              </>
             )}
           </div>
-          <span className="text-zinc-400 dark:text-zinc-600">•</span>
-          <span className="text-[11px] text-zinc-500">v1.0.0</span>
         </div>
       </div>
     </footer>

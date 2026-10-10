@@ -1,5 +1,7 @@
 import React from "react";
-import { WifiOff, Zap, Shield, EyeOff, Check, Cpu } from "lucide-react";
+import Image from "next/image";
+import { WifiOff, Zap, Cpu, EyeOff, Check } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 export function Manifesto() {
   const principles = [
@@ -7,130 +9,148 @@ export function Manifesto() {
       icon: WifiOff,
       title: "Air-Gapped Security",
       badge: "0 BYTES TRANSMITTED",
-      tagline: "Turn off your Wi-Fi. Everything still works.",
+      tagline: "Disconnect your Wi-Fi. Everything still works.",
       description:
-        "Every file calculation executes strictly inside isolated client Web Workers. Your confidential contracts, financial statements, and personal photos never leave your device. They physically cannot leak to a third-party server.",
+        "Every file operation runs strictly inside isolated client Web Workers. Your confidential legal contracts, financial statements, and personal photos never leave your machine and physically cannot leak to a third-party server.",
       points: [
-        "Pure WebAssembly & JavaScript execution in RAM",
-        "Air-gapped verification: disconnect your internet connection and test it",
-        "No backend endpoints receiving document byte streams",
+        "Pure WebAssembly and JavaScript execution in device RAM",
+        "Air-gapped verification: turn off your internet connection and test it",
+        "Zero backend endpoints receiving document byte streams",
       ],
     },
     {
       icon: Zap,
-      title: "Zero Network Latency",
-      badge: "MEMORY-BUS VELOCITY",
-      tagline: "Instant compute at hardware speeds.",
+      title: "Memory-Bus Velocity",
+      badge: "HARDWARE THROUGHPUT",
+      tagline: "Instant compute at native silicon speeds.",
       description:
-        "Traditional web tools force you to upload a 500MB file, wait for cloud queue processing, and download it back. SlickKit processes files directly from your disk cache into local memory with zero network delay.",
+        "Traditional web tools force you to upload a 500 MB file, wait in a cloud queue, and download the result back. SlickKit processes files directly from your local disk cache into memory with zero network round-trip.",
       points: [
         "No waiting on upload queues or bandwidth throttling",
-        "Multi-core concurrency via Web Workers & WebGPU",
-        "Immediate preview generation and instantaneous downloads",
+        "Multi-core concurrency via Web Workers and WebGPU",
+        "Immediate page preview generation and instant local saves",
       ],
     },
     {
       icon: Cpu,
       title: "The End of $20/mo Subscriptions",
-      badge: "PAY ONCE, OWN FOREVER",
+      badge: "NO CLOUD RENT",
       tagline: "Rejecting predatory SaaS recurring bills.",
       description:
-        "Utilities don't need cloud server farms to operate. Because client-side compute uses your device's processors, we incur minimal backend infrastructure overhead. We reject predatory recurring subscriptions in favor of lifetime utility licenses.",
+        "Daily utilities do not need expensive cloud server farms to operate. Because client-side compute uses your own processor, we eliminate recurring cloud infrastructure overhead and pass that freedom directly to you.",
       points: [
-        "Transparent pricing with zero hidden renewal traps",
-        "Tools you own forever without risk of abrupt lockouts",
-        "Free standalone offline modes for core essential utilities",
+        "Core everyday utilities remain free and accessible offline",
+        "Zero dark-pattern paywalls holding your processed files hostage",
+        "Built for longevity on open, standards-compliant Web APIs",
       ],
     },
   ];
 
   return (
-    <section id="manifesto" className="py-20 md:py-28 border-t border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-[#0c0c0e]/60">
+    <section id="manifesto" className="py-28 lg:py-36 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-medium border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-600 dark:text-[#a1a1aa] mb-4">
-            <Shield className="w-3.5 h-3.5 text-[#4ade80]" />
-            <span>STUDIO MANIFESTO</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-[#fafafa] mb-4">
-            Why We Build Local-First
-          </h2>
-          <p className="text-base sm:text-lg text-zinc-600 dark:text-[#a1a1aa] leading-relaxed">
-            The modern web turned simple daily utilities into slow, subscription-milking cloud traps.
-            We are building an indie studio dedicated to restoring high-performance, private, client-side software.
-          </p>
-        </div>
-
-        {/* 3 Clean Principle Feature Blocks */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          {principles.map((p, idx) => {
-            const Icon = p.icon;
-            return (
-              <div
-                key={idx}
-                className="flex flex-col justify-between rounded-2xl border border-zinc-200 dark:border-[#27272a] bg-white dark:bg-[#121215] p-7 transition-all hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-zinc-100 dark:bg-zinc-800/80 flex items-center justify-center text-emerald-600 dark:text-[#4ade80]">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <span className="text-[10px] font-mono tracking-wider px-2.5 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-900">
-                      {p.badge}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold tracking-tight text-zinc-900 dark:text-[#fafafa] mb-1">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm font-medium text-emerald-700 dark:text-[#4ade80] mb-4">
-                    {p.tagline}
-                  </p>
-
-                  <p className="text-sm text-zinc-600 dark:text-[#a1a1aa] leading-relaxed mb-6">
-                    {p.description}
-                  </p>
-                </div>
-
-                <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800/60 space-y-2.5">
-                  {p.points.map((pt, i) => (
-                    <div key={i} className="flex items-start gap-2.5 text-xs text-zinc-600 dark:text-zinc-300">
-                      <Check className="w-4 h-4 text-[#4ade80] shrink-0 mt-0.5" />
-                      <span>{pt}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Zero Telemetry Banner */}
-        <div className="rounded-2xl border border-[#164d32] bg-[#ecf8f1]/80 dark:bg-[#0a2619]/40 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-[#4ade80]/20 flex items-center justify-center text-[#22c55e] dark:text-[#4ade80] shrink-0 mt-1">
-              <EyeOff className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="flex items-center gap-2 mb-1">
-                <h4 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-[#fafafa]">
-                  Zero Surveillance & Zero Telemetry
-                </h4>
-                <span className="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-mono bg-[#4ade80]/20 text-emerald-800 dark:text-[#4ade80] font-semibold">
-                  AUDITABLE
+        {/* Editorial Split Layout (5 Cols Sticky Thesis + Hardware Visual / 7 Cols Vertical Stack) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+          {/* Left Column: Editorial Thesis + Brushed Aluminum Silicon Photography */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
+            <Reveal>
+              <h2 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.08] mb-4">
+                Why we build{" "}
+                <span className="whitespace-nowrap text-emerald-700 dark:text-emerald-400">
+                  local-first.
                 </span>
-              </div>
-              <p className="text-xs sm:text-sm text-zinc-700 dark:text-[#a1a1aa] leading-relaxed max-w-2xl">
-                No tracking cookies. No session recording pixels. No marketing beacons. Your browser console network tab stays completely silent during document operations.
+              </h2>
+              <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
+                The modern web turned simple daily utilities into slow, subscription-gated cloud traps. SlickKit is an independent studio restoring high-performance, private, client-side software.
               </p>
-            </div>
+
+              {/* Studio Hardware Still-Life in Double-Bezel Enclosure */}
+              <div className="double-bezel-shell mb-6">
+                <div className="double-bezel-core overflow-hidden">
+                  <div className="relative h-56 sm:h-64 w-full">
+                    <Image
+                      src="/images/manifesto-local-silicon.jpg"
+                      alt="Precision milled brushed aluminum hardware module resting on architectural concrete in natural daylight"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                      className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Zero Surveillance Auditable Guarantee Plate */}
+              <div className="double-bezel-shell">
+                <div className="double-bezel-core p-5 sm:p-6 bg-gradient-to-br from-emerald-50/80 via-white to-white dark:from-emerald-950/25 dark:via-[#12151a] dark:to-[#12151a]">
+                  <div className="flex items-start gap-3.5">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-600/10 dark:bg-emerald-400/10 border border-emerald-600/20 flex items-center justify-center text-emerald-700 dark:text-emerald-400 shrink-0">
+                      <EyeOff className="w-5 h-5" strokeWidth={1.5} />
+                    </div>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 className="text-base font-bold text-slate-950 dark:text-white">
+                          Zero Surveillance &amp; Telemetry
+                        </h3>
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-600/20">
+                          AUDITABLE
+                        </span>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        No tracking cookies, session pixels, or analytics beacons. Open your browser DevTools Network tab: it remains completely silent during every operation.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
           </div>
 
-          <div className="shrink-0 flex items-center gap-2">
-            <span className="text-xs font-mono px-3 py-1.5 rounded-full border border-[#164d32] bg-white/50 dark:bg-black/40 text-emerald-900 dark:text-[#4ade80]">
-              [ PRIVACY GUARANTEE: 100% ]
-            </span>
+          {/* Right Column: Staggered Double-Bezel Architectural Principles */}
+          <div className="lg:col-span-7 space-y-6">
+            {principles.map((p, idx) => {
+              const Icon = p.icon;
+              return (
+                <Reveal key={p.title} delayMs={idx * 90}>
+                  <div className="double-bezel-shell">
+                    <div className="double-bezel-core p-6 sm:p-8 lg:p-9 transition-shadow duration-500 hover:shadow-bezel-hover">
+                      <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
+                        <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
+                          <Icon className="w-6 h-6" strokeWidth={1.5} />
+                        </div>
+                        <span className="text-[11px] font-mono font-medium tracking-wider px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900">
+                          {p.badge}
+                        </span>
+                      </div>
+
+                      <h3 className="text-xl sm:text-2xl font-bold tracking-[-0.025em] text-slate-950 dark:text-white mb-1">
+                        {p.title}
+                      </h3>
+                      <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-400 mb-4">
+                        {p.tagline}
+                      </p>
+                      <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                        {p.description}
+                      </p>
+
+                      <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] grid grid-cols-1 gap-2.5">
+                        {p.points.map((pt) => (
+                          <div
+                            key={pt}
+                            className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                          >
+                            <Check
+                              className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5"
+                              strokeWidth={1.75}
+                            />
+                            <span>{pt}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </div>
