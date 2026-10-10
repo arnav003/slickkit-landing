@@ -1,47 +1,47 @@
 import React from "react";
 import Image from "next/image";
-import { WifiOff, Zap, Cpu, EyeOff, Check } from "lucide-react";
+import { ShieldCheck, Zap, BadgeCheck, EyeOff, Check } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 export function Manifesto() {
   const principles = [
     {
-      icon: WifiOff,
-      title: "Air-Gapped Security",
-      badge: "0 BYTES TRANSMITTED",
-      tagline: "Disconnect your Wi-Fi. Everything still works.",
+      icon: ShieldCheck,
+      title: "Safe for Confidential & Financial Work",
+      badge: "NEVER LEAVES YOUR DEVICE",
+      tagline: "Built for files you aren't allowed to upload anywhere.",
       description:
-        "Every file operation runs strictly inside isolated client Web Workers. Your confidential legal contracts, financial statements, and personal photos never leave your machine and physically cannot leak to a third-party server.",
+        "Whether you are preparing quarterly financial statements, reviewing a confidential company contract, organizing HR records, or combining personal tax forms, your documents stay strictly on your own computer. They can never leak to a third-party server.",
       points: [
-        "Pure WebAssembly and JavaScript execution in device RAM",
-        "Air-gapped verification: turn off your internet connection and test it",
-        "Zero backend endpoints receiving document byte streams",
+        "Trusted for banking, finance, legal, corporate, and personal documents",
+        "Your files are never uploaded to any cloud server at any point",
+        "Turn off your Wi-Fi and keep working with complete peace of mind",
+      ],
+    },
+    {
+      icon: BadgeCheck,
+      title: "One-Time Lifetime Pass. Zero Subscriptions.",
+      badge: "PAY ONCE, OWN FOREVER",
+      tagline: "Stop paying $20 every month just to edit a PDF.",
+      description:
+        "You should not have to rent basic everyday file tools. Because your own computer handles the work, we don't have massive cloud server bills to pass on to you. Use our core daily tools for free, or get a simple one-time lifetime pass.",
+      points: [
+        "No monthly recurring bills or sneaky auto-renewal traps",
+        "Pay once for a lifetime pass and own your tools forever",
+        "Core everyday features work right away without even creating an account",
       ],
     },
     {
       icon: Zap,
-      title: "Memory-Bus Velocity",
-      badge: "HARDWARE THROUGHPUT",
-      tagline: "Instant compute at native silicon speeds.",
+      title: "Instant Speed With No Upload Waiting",
+      badge: "NO FILE SIZE QUEUES",
+      tagline: "Open a 300-page report as fast as a 1-page note.",
       description:
-        "Traditional web tools force you to upload a 500 MB file, wait in a cloud queue, and download the result back. SlickKit processes files directly from your local disk cache into memory with zero network round-trip.",
+        "Stop staring at slow upload bars or hitting frustrating file-size limits when you are on a deadline. Because nothing travels back and forth over the internet, even huge documents and high-resolution scans open and save in a split second.",
       points: [
-        "No waiting on upload queues or bandwidth throttling",
-        "Multi-core concurrency via Web Workers and WebGPU",
-        "Immediate page preview generation and instant local saves",
-      ],
-    },
-    {
-      icon: Cpu,
-      title: "The End of $20/mo Subscriptions",
-      badge: "NO CLOUD RENT",
-      tagline: "Rejecting predatory SaaS recurring bills.",
-      description:
-        "Daily utilities do not need expensive cloud server farms to operate. Because client-side compute uses your own processor, we eliminate recurring cloud infrastructure overhead and pass that freedom directly to you.",
-      points: [
-        "Core everyday utilities remain free and accessible offline",
-        "Zero dark-pattern paywalls holding your processed files hostage",
-        "Built for longevity on open, standards-compliant Web APIs",
+        "Works effortlessly even on slow hotel, airport, or café Wi-Fi",
+        "Handle large multi-page financial decks and scans without lag",
+        "Calm, clutter-free workspace with zero ads or pop-ups",
       ],
     },
   ];
@@ -51,17 +51,17 @@ export function Manifesto() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Editorial Split Layout (5 Cols Sticky Thesis + Hardware Visual / 7 Cols Vertical Stack) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left Column: Editorial Thesis + Brushed Aluminum Silicon Photography */}
+          {/* Left Column: Editorial Thesis + Studio Photography */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
             <Reveal>
               <h2 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.08] mb-4">
-                Why we build{" "}
+                Built for your{" "}
                 <span className="whitespace-nowrap text-emerald-700 dark:text-emerald-400">
-                  local-first.
+                  peace of mind.
                 </span>
               </h2>
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-                The modern web turned simple daily utilities into slow, subscription-gated cloud traps. SlickKit is an independent studio restoring high-performance, private, client-side software.
+                Everyday file utilities shouldn&apos;t require a $20/month subscription or force you to hand over confidential documents. SlickKit builds calm, honest tools that keep your work private.
               </p>
 
               {/* Studio Hardware Still-Life in Double-Bezel Enclosure */}
@@ -70,7 +70,7 @@ export function Manifesto() {
                   <div className="relative h-56 sm:h-64 w-full">
                     <Image
                       src="/images/manifesto-local-silicon.jpg"
-                      alt="Precision milled brushed aluminum hardware module resting on architectural concrete in natural daylight"
+                      alt="Precision brushed aluminum module resting on clean stone in natural daylight"
                       fill
                       sizes="(max-width: 1024px) 100vw, 42vw"
                       className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-105"
@@ -79,7 +79,7 @@ export function Manifesto() {
                 </div>
               </div>
 
-              {/* Zero Surveillance Auditable Guarantee Plate */}
+              {/* Zero Snooping Guarantee Plate */}
               <div className="double-bezel-shell">
                 <div className="double-bezel-core p-5 sm:p-6 bg-gradient-to-br from-emerald-50/80 via-white to-white dark:from-emerald-950/25 dark:via-[#12151a] dark:to-[#12151a]">
                   <div className="flex items-start gap-3.5">
@@ -89,14 +89,14 @@ export function Manifesto() {
                     <div>
                       <div className="flex flex-wrap items-center gap-2 mb-1">
                         <h3 className="text-base font-bold text-slate-950 dark:text-white">
-                          Zero Surveillance &amp; Telemetry
+                          Zero Tracking, Zero Snooping
                         </h3>
                         <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-600/20">
-                          AUDITABLE
+                          100% PRIVATE
                         </span>
                       </div>
                       <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        No tracking cookies, session pixels, or analytics beacons. Open your browser DevTools Network tab: it remains completely silent during every operation.
+                        We never see, read, or store your files. We don&apos;t run ad trackers or sell your data. What happens on your screen stays strictly on your computer.
                       </p>
                     </div>
                   </div>
@@ -105,7 +105,7 @@ export function Manifesto() {
             </Reveal>
           </div>
 
-          {/* Right Column: Staggered Double-Bezel Architectural Principles */}
+          {/* Right Column: Staggered Double-Bezel Consumer & Business Promises */}
           <div className="lg:col-span-7 space-y-6">
             {principles.map((p, idx) => {
               const Icon = p.icon;
