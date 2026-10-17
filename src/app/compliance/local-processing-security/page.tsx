@@ -63,9 +63,30 @@ const AUDIT_STEPS = [
   },
 ];
 
+import { BreadcrumbJsonLd } from "../../../components/BreadcrumbJsonLd";
+import { HowToJsonLd } from "../../../components/HowToJsonLd";
+
 export default function LocalProcessingSecurityPage() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-[#F6F8FA] dark:bg-[#0B0D10] relative">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "/" },
+          { name: "Compliance Hub", item: "/compliance" },
+          { name: "Local Processing Verification", item: "/compliance/local-processing-security" },
+        ]}
+      />
+      <HowToJsonLd
+        name="How to Verify Zero Cloud Uploads for Any PDF Tool in Browser DevTools"
+        description="A step-by-step technical guide to inspecting network activity using Chrome or Firefox DevTools to verify that files are never uploaded to a cloud server."
+        totalTime="PT2M"
+        toolName="Browser Developer Tools (Network Inspector)"
+        steps={AUDIT_STEPS.map((s) => ({
+          name: s.title,
+          text: s.instructions,
+          url: "/compliance/local-processing-security",
+        }))}
+      />
       <Header />
 
       <main id="main-content" className="flex-1 pt-32 pb-24">

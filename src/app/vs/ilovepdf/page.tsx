@@ -33,9 +33,18 @@ export const metadata: Metadata = {
   },
 };
 
+import { BreadcrumbJsonLd } from "../../../components/BreadcrumbJsonLd";
+
 export default function VersusILovePdfPage() {
   return (
     <div className="min-h-[100dvh] flex flex-col bg-[#F6F8FA] dark:bg-[#0B0D10] relative">
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", item: "/" },
+          { name: "Comparisons", item: "/vs" },
+          { name: "SlickKit vs. iLovePDF", item: "/vs/ilovepdf" },
+        ]}
+      />
       <Header />
 
       <main id="main-content" className="flex-1 pt-32 pb-24">
