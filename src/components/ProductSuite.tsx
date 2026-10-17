@@ -17,8 +17,13 @@ import {
 } from "lucide-react";
 import { NotifyModal } from "./NotifyModal";
 import { Reveal } from "./Reveal";
+import { useDictionary, useLocale } from "../i18n/LocaleProvider";
 
 export function ProductSuite() {
+  const dict = useDictionary();
+  const locale = useLocale();
+  const pdfHref = `/pdf/${locale}`;
+
   const [notifyModalOpen, setNotifyModalOpen] = useState(false);
   const [activeNotifyTool, setActiveNotifyTool] = useState("SlickKit Image");
 
@@ -42,19 +47,19 @@ export function ProductSuite() {
   return (
     <section id="tools" className="py-28 lg:py-36 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header: Vertical Stack */}
+        {/* Section Header */}
         <Reveal className="mb-14 lg:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.08] mb-4">
-            One simple toolkit for your daily files.
+            {dict.productSuite.sectionTitle}
           </h2>
           <p className="max-w-[58ch] text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            Fast, easy-to-use utilities for your everyday documents, photos, and media. Everything happens right on your own computer so your confidential files never get uploaded anywhere.
+            {dict.productSuite.sectionSubtext}
           </p>
         </Reveal>
 
-        {/* Asymmetric 4-Cell Bento Grid (7/5 + 5/7 rhythm) */}
+        {/* Asymmetric 4-Cell Bento Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7">
-          {/* CELL 1 (7 Cols): SlickKit PDF — Flagship Live Utility */}
+          {/* CELL 1 (7 Cols): SlickKit PDF */}
           <Reveal className="lg:col-span-7" delayMs={40}>
             <div className="double-bezel-shell h-full">
               <div className="double-bezel-core h-full p-6 sm:p-8 lg:p-9 flex flex-col justify-between bg-gradient-to-br from-emerald-50/75 via-white to-white dark:from-emerald-950/25 dark:via-[#12151a] dark:to-[#12151a] transition-shadow duration-500 hover:shadow-bezel-hover">
@@ -67,22 +72,22 @@ export function ProductSuite() {
                       </div>
                       <div>
                         <h3 className="text-xl sm:text-2xl font-bold tracking-[-0.025em] text-slate-950 dark:text-white">
-                          SlickKit PDF
+                          {dict.productSuite.pdf.title}
                         </h3>
                         <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          Everyday &amp; Confidential PDFs
+                          {dict.productSuite.pdf.tag}
                         </span>
                       </div>
                     </div>
 
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-semibold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-600/25">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
-                      AVAILABLE NOW
+                      {dict.productSuite.availableNow}
                     </span>
                   </div>
 
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-[58ch] mb-6">
-                    Combine, split, shrink, and rearrange PDFs in seconds. Perfect for financial statements, client contracts, invoices, and tax forms that you cannot upload to public websites.
+                    {dict.productSuite.pdf.description}
                   </p>
 
                   {/* Interactive Mini PDF Workbench Preview */}
@@ -100,14 +105,12 @@ export function ProductSuite() {
                                 : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
                             }`}
                           >
-                            {mode === "compress" ? "Shrink Size" : mode === "merge" ? "Combine" : "Rotate Pages"}
+                            {dict.productSuite.pdf.previewModes[mode].label}
                           </button>
                         ))}
                       </div>
                       <span className="text-[11px] font-mono text-emerald-700 dark:text-emerald-400">
-                        {pdfMode === "compress" && "24 MB -> 6 MB (Ready for email)"}
-                        {pdfMode === "merge" && "4 Statements -> 1 Clean PDF"}
-                        {pdfMode === "rotate" && "Click any page to rotate 90°"}
+                        {dict.productSuite.pdf.previewModes[pdfMode].stat}
                       </span>
                     </div>
 
@@ -141,7 +144,7 @@ export function ProductSuite() {
                             </div>
                             <span className="mt-1.5 text-[10px] font-mono text-slate-400 group-hover/page:text-emerald-600 dark:group-hover/page:text-emerald-400 flex items-center gap-0.5">
                               <RotateCw className="w-2.5 h-2.5" strokeWidth={1.5} />
-                              <span>Page {page}</span>
+                              <span>P{page}</span>
                             </span>
                           </button>
                         );
@@ -152,19 +155,25 @@ export function ProductSuite() {
 
                 {/* Bottom Reassurance + Island CTA */}
                 <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <div className="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
-                    <ShieldCheck
-                      className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"
-                      strokeWidth={1.5}
-                    />
-                    <span>Stays on your computer • Works offline</span>
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400">
+                      <ShieldCheck
+                        className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"
+                        strokeWidth={1.5}
+                      />
+                      <span>{dict.hero.localGuarantee}</span>
+                    </div>
+                    <div className="text-[11px] font-mono text-slate-400 flex items-center gap-1.5 sm:pl-6">
+                      <span className="text-[10px] uppercase font-semibold text-emerald-700 dark:text-emerald-400">9 Languages:</span>
+                      <span className="tracking-wider">🇬🇧 🇪🇸 🇫🇷 🇩🇪 🇵🇹 🇮🇹 🇷🇴 🇷🇺 🇭🇺</span>
+                    </div>
                   </div>
 
                   <Link
-                    href="/pdf"
+                    href={pdfHref}
                     className="group inline-flex items-center justify-between sm:justify-center gap-3 rounded-full bg-slate-950 dark:bg-white text-white dark:text-slate-950 pl-5 pr-1.5 py-1.5 text-xs sm:text-sm font-semibold transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-slate-800 dark:hover:bg-slate-100 active:scale-[0.98]"
                   >
-                    <span>Open PDF Toolkit</span>
+                    <span>{dict.productSuite.pdf.openToolkit}</span>
                     <span className="w-8 h-8 rounded-full bg-white/15 dark:bg-slate-950/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[1px] group-hover:scale-105">
                       <ArrowUpRight
                         className="w-4 h-4 text-emerald-400 dark:text-emerald-600"
@@ -177,7 +186,7 @@ export function ProductSuite() {
             </div>
           </Reveal>
 
-          {/* CELL 2 (5 Cols): SlickKit Image — Coming Soon */}
+          {/* CELL 2 (5 Cols): SlickKit Image */}
           <Reveal className="lg:col-span-5" delayMs={120}>
             <div className="double-bezel-shell h-full">
               <div className="double-bezel-core h-full p-6 sm:p-8 flex flex-col justify-between overflow-hidden transition-shadow duration-500 hover:shadow-bezel-hover">
@@ -189,20 +198,19 @@ export function ProductSuite() {
                       </div>
                       <div>
                         <h3 className="text-xl font-bold tracking-[-0.02em] text-slate-950 dark:text-white">
-                          SlickKit Image
+                          {dict.productSuite.image.title}
                         </h3>
                         <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          Private Photo Optimizer
+                          {dict.productSuite.image.tag}
                         </span>
                       </div>
                     </div>
 
                     <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                      Coming Soon
+                      {dict.productSuite.comingSoon}
                     </span>
                   </div>
 
-                  {/* Generated Optical Prism Studio Photograph */}
                   <div className="relative h-36 w-full rounded-2xl overflow-hidden mb-5 border border-slate-900/[0.06] dark:border-white/[0.06]">
                     <Image
                       src="/images/bento-webgpu-optics.jpg"
@@ -214,14 +222,14 @@ export function ProductSuite() {
                   </div>
 
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
-                    Shrink large photos for email attachments, convert formats in bulk, and remove backgrounds cleanly without sending personal or company images to the cloud.
+                    {dict.productSuite.image.description}
                   </p>
 
                   {/* Interactive Photo Shrink Slider */}
                   <div className="rounded-xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 p-3.5 mb-6">
                     <div className="flex items-center justify-between text-xs font-mono mb-2">
                       <span className="text-slate-500 dark:text-slate-400">
-                        Shrink Photo Size: {avifRatio}%
+                        {dict.productSuite.image.reductionLabel}: {avifRatio}%
                       </span>
                       <span className="font-semibold text-emerald-700 dark:text-emerald-400">
                         4.8 MB -&gt; {compressedKb} KB
@@ -241,15 +249,15 @@ export function ProductSuite() {
 
                 <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] flex items-center justify-between gap-3">
                   <span className="text-xs font-medium text-slate-500 dark:text-slate-400 truncate">
-                    Full Visual Quality • Zero Uploads
+                    {dict.hero.localGuarantee}
                   </span>
 
                   <button
-                    onClick={() => handleOpenNotify("SlickKit Image")}
+                    onClick={() => handleOpenNotify(dict.productSuite.image.title)}
                     type="button"
                     className="group inline-flex items-center gap-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300/90 dark:border-slate-700 pl-4 pr-1.5 py-1.5 text-xs font-semibold hover:border-emerald-600/50 transition-all duration-300 active:scale-[0.98]"
                   >
-                    <span>Notify Me</span>
+                    <span>{dict.productSuite.notifyMe}</span>
                     <span className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                       <Bell className="w-3.5 h-3.5" strokeWidth={1.5} />
                     </span>
@@ -259,7 +267,7 @@ export function ProductSuite() {
             </div>
           </Reveal>
 
-          {/* CELL 3 (5 Cols): SlickKit Media — Video & Audio Trimmer */}
+          {/* CELL 3 (5 Cols): SlickKit Media */}
           <Reveal className="lg:col-span-5" delayMs={160}>
             <div className="double-bezel-shell h-full">
               <div className="double-bezel-core h-full p-6 sm:p-8 flex flex-col justify-between transition-shadow duration-500 hover:shadow-bezel-hover">
@@ -271,34 +279,34 @@ export function ProductSuite() {
                       </div>
                       <div>
                         <h3 className="text-xl font-bold tracking-[-0.02em] text-slate-950 dark:text-white">
-                          SlickKit Media
+                          {dict.productSuite.video.title}
                         </h3>
                         <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          Quick Video &amp; Audio Trimmer
+                          {dict.productSuite.video.tag}
                         </span>
                       </div>
                     </div>
 
                     <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
-                      Planned
+                      {dict.productSuite.comingSoon}
                     </span>
                   </div>
 
                   <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                    Trim screen recordings, save audio from recorded meetings, and turn clips into shareable GIFs in seconds without waiting for huge video files to upload.
+                    {dict.productSuite.video.description}
                   </p>
 
-                  {/* Tactile Timeline Scrubber Visual */}
+                  {/* Timeline Scrubber */}
                   <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 p-4 mb-6">
                     <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 mb-3">
                       <span className="flex items-center gap-1.5 text-slate-800 dark:text-slate-200 font-medium">
                         <Scissors className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.5} />
                         <span>Clip: 00:04 - 00:18</span>
                       </span>
-                      <span>Meeting Recording -&gt; MP4</span>
+                      <span>Recording -&gt; WebM / MP4</span>
                     </div>
 
-                    {/* Acoustic / Frame Bars */}
+                    {/* Acoustic Bars */}
                     <div className="grid grid-cols-12 gap-1 items-end h-12 px-2 py-1.5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/70 dark:border-slate-800">
                       {[35, 65, 90, 55, 80, 100, 75, 60, 85, 95, 50, 40].map(
                         (heightPct, idx) => (
@@ -319,15 +327,15 @@ export function ProductSuite() {
 
                 <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] flex items-center justify-between gap-3">
                   <span className="text-xs font-medium text-slate-500 dark:text-slate-400 truncate">
-                    No Upload Wait • No File Size Caps
+                    {dict.hero.localGuarantee}
                   </span>
 
                   <button
-                    onClick={() => handleOpenNotify("SlickKit Media")}
+                    onClick={() => handleOpenNotify(dict.productSuite.video.title)}
                     type="button"
                     className="group inline-flex items-center gap-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300/90 dark:border-slate-700 pl-4 pr-1.5 py-1.5 text-xs font-semibold hover:border-emerald-600/50 transition-all duration-300 active:scale-[0.98]"
                   >
-                    <span>Notify Me</span>
+                    <span>{dict.productSuite.notifyMe}</span>
                     <span className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                       <Bell className="w-3.5 h-3.5" strokeWidth={1.5} />
                     </span>
@@ -337,7 +345,7 @@ export function ProductSuite() {
             </div>
           </Reveal>
 
-          {/* CELL 4 (7 Cols): SlickKit Vault — File Lock & Hidden Details Cleaner */}
+          {/* CELL 4 (7 Cols): SlickKit Vault */}
           <Reveal className="lg:col-span-7" delayMs={200}>
             <div className="double-bezel-shell h-full">
               <div className="double-bezel-core h-full p-6 sm:p-8 lg:p-9 flex flex-col justify-between transition-shadow duration-500 hover:shadow-bezel-hover">
@@ -349,24 +357,24 @@ export function ProductSuite() {
                       </div>
                       <div>
                         <h3 className="text-xl sm:text-2xl font-bold tracking-[-0.025em] text-slate-950 dark:text-white">
-                          SlickKit Vault
+                          {dict.productSuite.vault.title}
                         </h3>
                         <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                          Document Lock &amp; Privacy Cleaner
+                          {dict.productSuite.vault.tag}
                         </span>
                       </div>
                     </div>
 
                     <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono font-semibold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
-                      Planned
+                      {dict.productSuite.comingSoon}
                     </span>
                   </div>
 
                   <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-[58ch] mb-6">
-                    Password-protect confidential files before sending them to clients, and automatically remove hidden location tags, author names, and edit history from your documents and photos.
+                    {dict.productSuite.vault.description}
                   </p>
 
-                  {/* Interactive Privacy Cleaner Toggle Plate */}
+                  {/* Interactive Privacy Cleaner Toggle */}
                   <div className="rounded-2xl bg-slate-50/90 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 p-4 sm:p-5 mb-6">
                     <div className="flex flex-wrap items-center justify-between gap-2 pb-3.5 mb-3.5 border-b border-slate-200/70 dark:border-slate-800">
                       <div className="flex items-center gap-2 text-xs font-semibold text-slate-900 dark:text-white">
@@ -374,7 +382,7 @@ export function ProductSuite() {
                           className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"
                           strokeWidth={1.5}
                         />
-                        <span>Hidden File Details Cleaner</span>
+                        <span>{dict.productSuite.vault.previewTitle}</span>
                       </div>
                       <button
                         type="button"
@@ -393,17 +401,17 @@ export function ProductSuite() {
                       {[
                         {
                           label: "Home / Office Location",
-                          raw: "New York, NY (Visible)",
+                          raw: "Coordinates (Visible)",
                           clean: "Removed",
                         },
                         {
                           label: "Author & Computer Name",
-                          raw: "Finance_MacBook_Pro",
+                          raw: "MacBook_User",
                           clean: "Removed",
                         },
                         {
                           label: "Document Access",
-                          raw: "Anyone Can Open",
+                          raw: "Unprotected",
                           clean: "Password Locked",
                         },
                       ].map((field) => (
@@ -436,15 +444,15 @@ export function ProductSuite() {
                       className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"
                       strokeWidth={1.5}
                     />
-                    <span>Safe for client &amp; financial sharing</span>
+                    <span>{dict.hero.localGuarantee}</span>
                   </div>
 
                   <button
-                    onClick={() => handleOpenNotify("SlickKit Vault")}
+                    onClick={() => handleOpenNotify(dict.productSuite.vault.title)}
                     type="button"
                     className="group inline-flex items-center justify-between sm:justify-center gap-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300/90 dark:border-slate-700 pl-4 pr-1.5 py-1.5 text-xs font-semibold hover:border-emerald-600/50 transition-all duration-300 active:scale-[0.98]"
                   >
-                    <span>Notify Me</span>
+                    <span>{dict.productSuite.notifyMe}</span>
                     <span className="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-emerald-600 dark:text-emerald-400">
                       <Bell className="w-3.5 h-3.5" strokeWidth={1.5} />
                     </span>

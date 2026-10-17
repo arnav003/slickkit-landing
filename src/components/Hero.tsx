@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -16,45 +16,23 @@ import {
   Building2,
 } from "lucide-react";
 import { Reveal } from "./Reveal";
-
-interface SamplePreset {
-  id: string;
-  name: string;
-  sizeLabel: string;
-  category: string;
-  speedLabel: string;
-}
-
-const PRESETS: SamplePreset[] = [
-  {
-    id: "finance-audit",
-    name: "Q4_Financials_2026.pdf",
-    sizeLabel: "18.4 MB · Finance",
-    category: "Confidential Financial Report",
-    speedLabel: "0.2 sec",
-  },
-  {
-    id: "legal-nda",
-    name: "Client_Contract.pdf",
-    sizeLabel: "6.2 MB · Legal",
-    category: "Private Company Agreement",
-    speedLabel: "0.1 sec",
-  },
-  {
-    id: "tax-return",
-    name: "Tax_Return_2026.pdf",
-    sizeLabel: "12.8 MB · Personal",
-    category: "Sensitive Personal Record",
-    speedLabel: "0.2 sec",
-  },
-];
+import { useDictionary, useLocale } from "../i18n/LocaleProvider";
+import type { SamplePreset } from "../i18n/dictionaries/dictionary-types";
 
 export function Hero() {
-  const [activePreset, setActivePreset] = useState<SamplePreset>(PRESETS[0]);
+  const dict = useDictionary();
+  const locale = useLocale();
+  const pdfHref = `/pdf/${locale}`;
+
+  const [activePreset, setActivePreset] = useState<SamplePreset>(dict.hero.presets[0]);
   const [computeTime, setComputeTime] = useState<string>("0.2 sec");
   const [isChecking, setIsChecking] = useState<boolean>(false);
   const [customFileName, setCustomFileName] = useState<string | null>(null);
   const [customFileSize, setCustomFileSize] = useState<string | null>(null);
+
+  useEffect(() => {
+    setActivePreset(dict.hero.presets[0]);
+  }, [dict]);
 
   const handleSelectPreset = useCallback((preset: SamplePreset) => {
     setIsChecking(true);
@@ -111,33 +89,32 @@ export function Hero() {
               {/* 1. Eyebrow Pill */}
               <div className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] uppercase tracking-[0.2em] font-mono font-medium bg-white/90 dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 border border-slate-900/[0.08] dark:border-white/10 shadow-sm mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
-                <span>Private Everyday Tools</span>
+                <span>{dict.hero.eyebrow}</span>
               </div>
 
-              {/* 2. Headline (Max 2 lines on desktop, warm & consumer-focused) */}
+              {/* 2. Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-[3.15rem] xl:text-[3.4rem] font-extrabold tracking-[-0.038em] text-slate-950 dark:text-white leading-[1.08] mb-6">
-                Everyday file tools that{" "}
+                {dict.hero.headlineBefore}
                 <span className="block">
-                  keep your{" "}
                   <span className="text-emerald-700 dark:text-emerald-400">
-                    privacy
-                  </span>{" "}
-                  first.
+                    {dict.hero.headlineHighlight}
+                  </span>
+                  {dict.hero.headlineAfter}
                 </span>
               </h1>
 
-              {/* 3. Subtext (19 words, <= 20 words rule, max 3 lines) */}
+              {/* 3. Subtext */}
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-[50ch] mb-9 font-normal">
-                Edit confidential PDFs, financial documents, and photos right on your computer. Zero cloud uploads and no monthly subscriptions.
+                {dict.hero.subtext}
               </p>
 
-              {/* 4. CTAs (1 Primary Island Button + 1 Secondary Pill) */}
+              {/* 4. CTAs */}
               <div className="flex flex-wrap items-center gap-3.5">
                 <Link
-                  href="/pdf"
+                  href={pdfHref}
                   className="group inline-flex items-center gap-3 rounded-full bg-slate-950 dark:bg-white text-white dark:text-slate-950 pl-6 pr-2 py-2 text-sm font-semibold tracking-[-0.01em] shadow-[0_14px_30px_-8px_rgba(15,23,42,0.22)] transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-slate-800 dark:hover:bg-slate-100 active:scale-[0.98]"
                 >
-                  <span>Open PDF Toolkit</span>
+                  <span>{dict.hero.openPdfToolkit}</span>
                   <span className="w-9 h-9 rounded-full bg-white/15 dark:bg-slate-950/10 flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-[1px] group-hover:scale-105">
                     <ArrowUpRight
                       className="w-4 h-4 text-emerald-400 dark:text-emerald-600"
@@ -150,18 +127,18 @@ export function Hero() {
                   href="#tools"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-semibold text-slate-800 dark:text-slate-200 bg-white dark:bg-[#151921] border border-slate-900/[0.09] dark:border-white/10 shadow-sm hover:border-slate-900/20 dark:hover:border-white/20 hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98]"
                 >
-                  <span>Explore Suite</span>
+                  <span>{dict.hero.exploreSuite}</span>
                 </a>
               </div>
             </Reveal>
           </div>
 
-          {/* RIGHT COLUMN: Tactile Studio Photography + Live On-Device Privacy Proof */}
+          {/* RIGHT COLUMN: Interactive Privacy Guarantee */}
           <div className="lg:col-span-6">
             <Reveal delayMs={120}>
               <div className="double-bezel-shell">
                 <div className="double-bezel-core overflow-hidden">
-                  {/* Top Visual: Studio Optical Glass & Brushed Aluminum Photography */}
+                  {/* Top Visual */}
                   <div className="relative h-52 sm:h-60 w-full overflow-hidden bg-slate-100 dark:bg-slate-900 border-b border-slate-900/[0.06] dark:border-white/[0.06]">
                     <Image
                       src="/images/hero-tactile-compute.jpg"
@@ -177,7 +154,7 @@ export function Hero() {
                     />
                   </div>
 
-                  {/* Bottom Interactive Module: Consumer-Friendly On-Device Privacy Check */}
+                  {/* Bottom Interactive Module */}
                   <div className="p-5 sm:p-6 bg-white dark:bg-[#12151a]">
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
                       <div className="flex items-center gap-2">
@@ -186,13 +163,13 @@ export function Hero() {
                           strokeWidth={1.5}
                         />
                         <span className="text-xs font-semibold tracking-[-0.01em] text-slate-900 dark:text-white">
-                          Interactive On-Device Privacy Guarantee
+                          {dict.hero.verifierTitle}
                         </span>
                       </div>
 
                       <label className="cursor-pointer inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-700 dark:text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/15 border border-emerald-600/20 px-3 py-1 rounded-full transition-colors">
                         <Upload className="w-3 h-3" strokeWidth={1.5} />
-                        <span>Test With Any File</span>
+                        <span>{dict.hero.testWithFile}</span>
                         <input
                           type="file"
                           onChange={handleFileInspect}
@@ -202,9 +179,9 @@ export function Hero() {
                       </label>
                     </div>
 
-                    {/* Sample Confidential Document Selector */}
+                    {/* Presets */}
                     <div className="grid grid-cols-3 gap-2 mb-4">
-                      {PRESETS.map((preset) => {
+                      {dict.hero.presets.map((preset) => {
                         const isSelected =
                           !customFileName && activePreset.id === preset.id;
                         return (
@@ -229,12 +206,12 @@ export function Hero() {
                       })}
                     </div>
 
-                    {/* Clear, Reassuring Consumer Readout Plate */}
+                    {/* Readout Plate */}
                     <div className="rounded-2xl bg-slate-50/90 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 p-4">
                       <div className="grid grid-cols-3 gap-3 pb-3 mb-3 border-b border-slate-200/70 dark:border-slate-800">
                         <div>
                           <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                            Document
+                            {dict.hero.docLabel}
                           </div>
                           <div className="text-xs font-semibold text-slate-900 dark:text-white truncate mt-0.5">
                             {customFileName || activePreset.name}
@@ -242,23 +219,27 @@ export function Hero() {
                         </div>
                         <div>
                           <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                            Speed
+                            {dict.hero.speedLabel}
                           </div>
                           <div className="text-xs font-mono font-semibold text-emerald-700 dark:text-emerald-400 mt-0.5 flex items-center gap-1">
                             <Zap className="w-3.5 h-3.5" strokeWidth={1.5} />
-                            <span>{isChecking ? "Opening..." : `Instant (${computeTime})`}</span>
+                            <span>
+                              {isChecking
+                                ? dict.hero.opening
+                                : `${dict.hero.instantPrefix} (${computeTime})`}
+                            </span>
                           </div>
                         </div>
                         <div>
                           <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                            Cloud Uploads
+                            {dict.hero.cloudUploadsLabel}
                           </div>
                           <div className="text-xs font-mono font-semibold text-slate-900 dark:text-white mt-0.5 flex items-center gap-1">
                             <CheckCircle2
                               className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"
                               strokeWidth={1.5}
                             />
-                            <span>0 Files Uploaded</span>
+                            <span>{dict.hero.zeroFilesUploaded}</span>
                           </div>
                         </div>
                       </div>
@@ -266,7 +247,7 @@ export function Hero() {
                       <div className="flex items-center justify-between gap-2 text-xs text-slate-600 dark:text-slate-300">
                         <span className="inline-flex items-center gap-1.5 font-medium text-emerald-800 dark:text-emerald-300">
                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400" />
-                          <span>Stays 100% on your computer.</span>
+                          <span>{dict.hero.localGuarantee}</span>
                         </span>
                         <span className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
                           {customFileSize || activePreset.category}
@@ -285,7 +266,7 @@ export function Hero() {
       <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-12 lg:pt-14">
         <div className="border-t border-slate-900/[0.07] dark:border-white/[0.07] pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
-            Built for people who handle sensitive documents every day
+            {dict.hero.useCasesTitle}
           </span>
 
           <div
@@ -294,27 +275,37 @@ export function Hero() {
           >
             <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200">
               <Landmark className="w-4 h-4 text-emerald-700 dark:text-emerald-400" strokeWidth={1.5} />
-              <span className="text-xs font-semibold tracking-tight">Finance &amp; Banking</span>
+              <span className="text-xs font-semibold tracking-tight">
+                {dict.hero.useCases.finance}
+              </span>
             </div>
 
             <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200">
               <Scale className="w-4 h-4 text-emerald-700 dark:text-emerald-400" strokeWidth={1.5} />
-              <span className="text-xs font-semibold tracking-tight">Legal Contracts</span>
+              <span className="text-xs font-semibold tracking-tight">
+                {dict.hero.useCases.legal}
+              </span>
             </div>
 
             <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200">
               <Building2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400" strokeWidth={1.5} />
-              <span className="text-xs font-semibold tracking-tight">Company &amp; HR Files</span>
+              <span className="text-xs font-semibold tracking-tight">
+                {dict.hero.useCases.company}
+              </span>
             </div>
 
             <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200">
               <UserCheck className="w-4 h-4 text-emerald-700 dark:text-emerald-400" strokeWidth={1.5} />
-              <span className="text-xs font-semibold tracking-tight">Personal Tax &amp; IDs</span>
+              <span className="text-xs font-semibold tracking-tight">
+                {dict.hero.useCases.personal}
+              </span>
             </div>
 
             <div className="flex items-center gap-2 text-slate-800 dark:text-slate-200">
               <Briefcase className="w-4 h-4 text-emerald-700 dark:text-emerald-400" strokeWidth={1.5} />
-              <span className="text-xs font-semibold tracking-tight">Daily Office Work</span>
+              <span className="text-xs font-semibold tracking-tight">
+                {dict.hero.useCases.office}
+              </span>
             </div>
           </div>
         </div>

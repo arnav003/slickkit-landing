@@ -1,70 +1,35 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { ShieldCheck, Zap, BadgeCheck, EyeOff, Check } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { useDictionary } from "../i18n/LocaleProvider";
+
+const ICONS = [ShieldCheck, BadgeCheck, Zap];
 
 export function Manifesto() {
-  const principles = [
-    {
-      icon: ShieldCheck,
-      title: "Safe for Confidential & Financial Work",
-      badge: "NEVER LEAVES YOUR DEVICE",
-      tagline: "Built for files you aren't allowed to upload anywhere.",
-      description:
-        "Whether you are preparing quarterly financial statements, reviewing a confidential company contract, organizing HR records, or combining personal tax forms, your documents stay strictly on your own computer. They can never leak to a third-party server.",
-      points: [
-        "Trusted for banking, finance, legal, corporate, and personal documents",
-        "Your files are never uploaded to any cloud server at any point",
-        "Turn off your Wi-Fi and keep working with complete peace of mind",
-      ],
-    },
-    {
-      icon: BadgeCheck,
-      title: "One-Time Lifetime Pass. Zero Subscriptions.",
-      badge: "PAY ONCE, OWN FOREVER",
-      tagline: "Stop paying $20 every month just to edit a PDF.",
-      description:
-        "You should not have to rent basic everyday file tools. Because your own computer handles the work, we don't have massive cloud server bills to pass on to you. Use our core daily tools for free, or get a simple one-time lifetime pass.",
-      points: [
-        "No monthly recurring bills or sneaky auto-renewal traps",
-        "Pay once for a lifetime pass and own your tools forever",
-        "Core everyday features work right away without even creating an account",
-      ],
-    },
-    {
-      icon: Zap,
-      title: "Instant Speed With No Upload Waiting",
-      badge: "NO FILE SIZE QUEUES",
-      tagline: "Open a 300-page report as fast as a 1-page note.",
-      description:
-        "Stop staring at slow upload bars or hitting frustrating file-size limits when you are on a deadline. Because nothing travels back and forth over the internet, even huge documents and high-resolution scans open and save in a split second.",
-      points: [
-        "Works effortlessly even on slow hotel, airport, or café Wi-Fi",
-        "Handle large multi-page financial decks and scans without lag",
-        "Calm, clutter-free workspace with zero ads or pop-ups",
-      ],
-    },
-  ];
+  const dict = useDictionary();
 
   return (
     <section id="manifesto" className="py-28 lg:py-36 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Editorial Split Layout (5 Cols Sticky Thesis + Hardware Visual / 7 Cols Vertical Stack) */}
+        {/* Editorial Split Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left Column: Editorial Thesis + Studio Photography */}
+          {/* Left Column */}
           <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-6">
             <Reveal>
               <h2 className="text-3xl sm:text-4xl lg:text-[2.85rem] font-extrabold tracking-[-0.035em] text-slate-950 dark:text-white leading-[1.08] mb-4">
-                Built for your{" "}
+                {dict.manifesto.titleBefore}
                 <span className="whitespace-nowrap text-emerald-700 dark:text-emerald-400">
-                  peace of mind.
+                  {dict.manifesto.titleHighlight}
                 </span>
               </h2>
               <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-                Everyday file utilities shouldn&apos;t require a $20/month subscription or force you to hand over confidential documents. SlickKit builds calm, honest tools that keep your work private.
+                {dict.manifesto.thesisP1}
               </p>
 
-              {/* Studio Hardware Still-Life in Double-Bezel Enclosure */}
+              {/* Studio Hardware Visual */}
               <div className="double-bezel-shell mb-6">
                 <div className="double-bezel-core overflow-hidden">
                   <div className="relative h-56 sm:h-64 w-full">
@@ -79,73 +44,59 @@ export function Manifesto() {
                 </div>
               </div>
 
-              {/* Zero Snooping Guarantee Plate */}
-              <div className="double-bezel-shell">
-                <div className="double-bezel-core p-5 sm:p-6 bg-gradient-to-br from-emerald-50/80 via-white to-white dark:from-emerald-950/25 dark:via-[#12151a] dark:to-[#12151a]">
-                  <div className="flex items-start gap-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-600/10 dark:bg-emerald-400/10 border border-emerald-600/20 flex items-center justify-center text-emerald-700 dark:text-emerald-400 shrink-0">
-                      <EyeOff className="w-5 h-5" strokeWidth={1.5} />
-                    </div>
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2 mb-1">
-                        <h3 className="text-base font-bold text-slate-950 dark:text-white">
-                          Zero Tracking, Zero Snooping
-                        </h3>
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-600/20">
-                          100% PRIVATE
-                        </span>
-                      </div>
-                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        We never see, read, or store your files. We don&apos;t run ad trackers or sell your data. What happens on your screen stays strictly on your computer.
-                      </p>
-                    </div>
-                  </div>
+              <div className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-900/[0.06] dark:border-white/[0.06] flex items-center gap-3">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0">
+                  <EyeOff className="w-4 h-4" strokeWidth={1.5} />
                 </div>
+                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {dict.manifesto.thesisP2}
+                </p>
               </div>
             </Reveal>
           </div>
 
-          {/* Right Column: Staggered Double-Bezel Consumer & Business Promises */}
+          {/* Right Column: 3 Pillars */}
           <div className="lg:col-span-7 space-y-6">
-            {principles.map((p, idx) => {
-              const Icon = p.icon;
+            {dict.manifesto.principles.map((p, idx) => {
+              const Icon = ICONS[idx] ?? ShieldCheck;
               return (
-                <Reveal key={p.title} delayMs={idx * 90}>
+                <Reveal key={p.title} delayMs={idx * 80}>
                   <div className="double-bezel-shell">
-                    <div className="double-bezel-core p-6 sm:p-8 lg:p-9 transition-shadow duration-500 hover:shadow-bezel-hover">
-                      <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
-                        <div className="w-12 h-12 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
-                          <Icon className="w-6 h-6" strokeWidth={1.5} />
-                        </div>
-                        <span className="text-[11px] font-mono font-medium tracking-wider px-3 py-1 rounded-full border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900">
+                    <div className="double-bezel-core p-6 sm:p-8 lg:p-9 bg-white dark:bg-[#12151a] transition-shadow duration-500 hover:shadow-bezel-hover">
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                        <span className="text-[10px] font-mono uppercase tracking-[0.18em] font-semibold text-emerald-700 dark:text-emerald-400">
                           {p.badge}
                         </span>
+                        <div className="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center">
+                          <Icon className="w-4 h-4" strokeWidth={1.5} />
+                        </div>
                       </div>
 
-                      <h3 className="text-xl sm:text-2xl font-bold tracking-[-0.025em] text-slate-950 dark:text-white mb-1">
+                      <h3 className="text-xl sm:text-2xl font-bold tracking-[-0.025em] text-slate-950 dark:text-white leading-[1.15] mb-2">
                         {p.title}
                       </h3>
-                      <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-400 mb-4">
+
+                      <p className="text-xs sm:text-sm font-medium text-emerald-800 dark:text-emerald-300 mb-4">
                         {p.tagline}
                       </p>
-                      <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+
+                      <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                         {p.description}
                       </p>
 
-                      <div className="pt-5 border-t border-slate-900/[0.06] dark:border-white/[0.06] grid grid-cols-1 gap-2.5">
-                        {p.points.map((pt) => (
-                          <div
-                            key={pt}
-                            className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300"
+                      <ul className="space-y-2.5 pt-4 border-t border-slate-900/[0.06] dark:border-white/[0.06]">
+                        {p.points.map((point) => (
+                          <li
+                            key={point}
+                            className="flex items-start gap-2.5 text-xs text-slate-600 dark:text-slate-300"
                           >
-                            <Check
-                              className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5"
-                              strokeWidth={1.75}
-                            />
-                            <span>{pt}</span>
-                          </div>
+                            <span className="w-4 h-4 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                              <Check className="w-2.5 h-2.5" strokeWidth={2.5} />
+                            </span>
+                            <span>{point}</span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
                   </div>
                 </Reveal>
