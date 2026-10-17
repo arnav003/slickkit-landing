@@ -182,10 +182,26 @@ export function Footer() {
                   SlickKit vs. Adobe Acrobat
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/is-ilovepdf-safe"
+                  className="text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+                >
+                  Is iLovePDF Safe?
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/is-smallpdf-safe"
+                  className="text-slate-600 dark:text-slate-400 hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+                >
+                  Is Smallpdf Safe?
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Compliance Column (3 Cols) */}
+          {/* Compliance & Solutions Column (3 Cols) */}
           <div className="md:col-span-3">
             <h3 className="text-xs font-semibold text-slate-900 dark:text-white mb-4">
               {dict.footer.colCompliance}
@@ -216,12 +232,28 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href="#faq"
-                  className="text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-colors"
+                <Link
+                  href="/for/legal"
+                  className="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
                 >
-                  {dict.header.nav.faq}
-                </a>
+                  For Legal &amp; Law Firms
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/for/finance"
+                  className="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
+                >
+                  For Finance &amp; Accounting
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/for/healthcare"
+                  className="text-slate-600 dark:text-slate-400 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors"
+                >
+                  For Healthcare &amp; PHI
+                </Link>
               </li>
             </ul>
           </div>

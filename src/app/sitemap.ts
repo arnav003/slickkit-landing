@@ -122,5 +122,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Competitor safety & privacy evaluations
+  const safetyRoutes = ["/is-ilovepdf-safe", "/is-smallpdf-safe"];
+
+  for (const route of safetyRoutes) {
+    entries.push({
+      url: `${baseUrl}${route}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    });
+  }
+
+  // Industry & persona vertical solution pages
+  const verticalRoutes = ["/for/legal", "/for/finance", "/for/healthcare"];
+
+  for (const route of verticalRoutes) {
+    entries.push({
+      url: `${baseUrl}${route}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.88,
+    });
+  }
+
   return entries;
 }

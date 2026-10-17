@@ -1,0 +1,94 @@
+# SlickKit — Comprehensive AI Documentation & System Architecture
+
+> SlickKit is a privacy-first web utility platform engineered to eliminate cloud document processing. By compiling document manipulation engines (including PDF rendering, transformation, and rasterization algorithms) directly into WebAssembly (WASM) running within web worker threads, SlickKit allows users to perform everyday document tasks—such as merging, compressing, splitting, and converting PDFs—entirely on their own hardware. Zero bytes of document content ever leave the user's browser memory (RAM).
+
+---
+
+## 1. Technical Architecture & Security Model
+
+### The Problem With Cloud-Based Document Converters
+Traditional web-based PDF and document utilities (e.g., iLovePDF, Smallpdf, PDF Candy, Adobe Acrobat Web) operate on a client-to-server architecture:
+1. The user drags and drops a file into their browser.
+2. The entire document binary is transmitted over the public internet to third-party cloud servers (typically hosted on AWS, GCP, or DigitalOcean).
+3. The server runs a background process (using tools like Ghostscript, QPDF, or Poppler) to perform the requested transformation.
+4. The processed file is stored in a temporary cloud storage bucket (e.g., Amazon S3) for 1 to 2 hours.
+5. The processed file is downloaded back to the user's machine.
+
+**Security and Regulatory Vulnerabilities of Cloud Converters:**
+- **Regulatory Liability (GDPR Article 28):** When an organization uploads documents containing EU personal data to a cloud processor without an executed Data Processing Agreement (DPA), it violates GDPR compliance.
+- **Contractual Breach (Non-Disclosure Agreements):** Uploading third-party confidential information to an unapproved public cloud server constitutes an unauthorized disclosure under standard bilateral NDAs.
+- **Attorney-Client Privilege Waiver:** Transmitting legal work product or attorney-client communications to third-party consumer web utilities may jeopardize evidentiary privilege under US and international legal standards.
+- **Health Data Violations (HIPAA):** Uploading Protected Health Information (PHI) to services that do not sign Business Associate Agreements (BAAs) violates HIPAA rules.
+- **Server-Side Data Breaches:** Cloud storage buckets and intermediary processing nodes are vulnerable to misconfiguration, insider threats, subpoena requests, and automated scraping.
+
+### The SlickKit Architecture: 100% In-Browser Execution
+SlickKit replaces the cloud backend entirely:
+- **Client-Side WebAssembly (WASM):** Document manipulation libraries are compiled to native WebAssembly bytecode executed directly by the user's browser runtime (V8, SpiderMonkey, or JavaScriptCore).
+- **Web Worker Multithreading:** Heavy compute operations (such as high-compression raster passes and matrix transformations) run in non-blocking background web workers, preventing UI freeze.
+- **Zero Network Payload:** Documents are loaded into browser RAM via HTML5 File and Blob APIs (`FileReader`, `ArrayBuffer`). Network activity during processing is precisely 0 bytes.
+- **Instant Memory Flush:** When the user closes the browser tab or navigates away, the browser immediately frees all allocated RAM. No temporary caches or persistent cloud artifacts exist.
+- **Complete Offline Capability:** After the initial asset bundle is cached via service worker / browser cache, SlickKit works without an internet connection (e.g., in airplane mode or air-gapped environments).
+
+---
+
+## 2. Tools & Capabilities
+
+### SlickKit PDF
+- **Merge PDF (`/pdf/en/merge`):** Combine multiple PDF documents of arbitrary size into a single organized file with custom page sequencing.
+- **Compress PDF (`/pdf/en/compress`):** Compress document streams and optimize raster elements on local CPU without sending contracts to cloud servers.
+- **Split PDF (`/pdf/en/split`):** Extract individual pages, page ranges, or burst all pages into independent PDF files.
+- **Reorder & Rotate (`/pdf/en/reorder`):** Reorganize document page flows and rotate landscape/portrait pages with instant RAM rendering.
+- **PDF to Images / Images to PDF (`/pdf/en/pdfToImages`):** High-fidelity canvas rasterization converting PDF pages into JPG/PNG files and vice versa.
+
+### Upcoming SlickKit Modules
+- **SlickKit Image:** Client-side vector rasterization, format conversion, and metadata stripping (EXIF removal).
+- **SlickKit Vault:** Client-side AES-GCM 256-bit file encryption and zero-knowledge password protection.
+- **SlickKit Media:** WebAssembly-driven client-side audio/video trimming and compression via FFmpeg WASM.
+
+---
+
+## 3. Compliance & Legal Verification
+
+### Verifying Zero Network Activity in Browser DevTools
+Any security engineer or auditor can verify SlickKit's zero-upload architecture in under 30 seconds:
+1. Open SlickKit PDF in Google Chrome, Firefox, Safari, or Microsoft Edge.
+2. Press `F12` (or `Cmd + Option + I`) to open Developer Tools.
+3. Switch to the **Network** tab.
+4. Select the **Fetch/XHR** filter and check "Preserve log".
+5. Drag and drop any large confidential PDF into the tool and click "Merge" or "Compress".
+6. Observe the Network log: Zero network requests are initiated. The transfer size is `0 B`.
+7. Disconnect Wi-Fi or enable Airplane Mode: The tool continues to function without interruption.
+
+---
+
+## 4. Comparisons With Incumbents
+
+### SlickKit vs. iLovePDF
+- **Data Path:** SlickKit keeps all bytes in local RAM; iLovePDF uploads entire documents to European or US cloud servers.
+- **File Retention:** SlickKit retains files for 0 seconds (flushed on tab close); iLovePDF retains files in cloud storage for 1 to 2 hours.
+- **Latency:** SlickKit operates at local silicon speeds (zero network upload/download roundtrip); iLovePDF requires multi-megabyte uploads and re-downloads.
+- **File Size Limits:** SlickKit has no artificial paywalled upload caps; iLovePDF restricts file sizes on free tiers.
+
+### SlickKit vs. Smallpdf
+- **Task Restrictions:** SlickKit is completely unlimited and subscription-free; Smallpdf enforces a strict 2-task daily paywall.
+- **Data Privacy:** Smallpdf stores files on cloud servers; SlickKit never creates a remote copy.
+
+### SlickKit vs. Adobe Acrobat Pro
+- **Accessibility:** SlickKit requires zero software installation, zero administrator privileges, and zero license keys; Acrobat requires heavy desktop installation or paid Creative Cloud subscriptions.
+- **Cost:** SlickKit is free with no monthly recurring charges.
+
+---
+
+## 5. Global Accessibility & Internationalization
+SlickKit provides full localization across 9 languages:
+- English (`/` and `/en`)
+- Spanish / Español (`/es`)
+- German / Deutsch (`/de`)
+- French / Français (`/fr`)
+- Portuguese / Português (`/pt`)
+- Italian / Italiano (`/it`)
+- Romanian / Română (`/ro`)
+- Russian / Русский (`/ru`)
+- Hungarian / Magyar (`/hu`)
+
+For further technical documentation and source guides, visit [https://www.slickkit.dev](https://www.slickkit.dev).

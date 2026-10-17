@@ -1,0 +1,39 @@
+# SlickKit
+
+> SlickKit is a privacy-first, client-side utility suite for everyday PDF, image, and media processing. Every operation executes 100% in local browser memory (RAM) using compiled WebAssembly and Web Workers. Zero bytes leave your device, ensuring zero cloud uploads, zero data retention, and strict compliance with GDPR, HIPAA, and non-disclosure agreements.
+
+## Core Products & Tools
+- [SlickKit Landing](https://www.slickkit.dev): Official homepage and privacy manifesto.
+- [SlickKit PDF Suite](https://www.slickkit.dev/pdf): On-device PDF editing suite that works fully offline.
+- [Merge PDF Locally](https://www.slickkit.dev/pdf/en/merge): Combine multiple confidential PDFs into a single document without network transfer.
+- [Compress PDF In-Browser](https://www.slickkit.dev/pdf/en/compress): Optimize and shrink PDF file sizes locally on your CPU.
+- [Split & Extract PDF Pages](https://www.slickkit.dev/pdf/en/split): Extract sensitive pages from bank statements or contracts privately.
+- [Reorder & Rotate Pages](https://www.slickkit.dev/pdf/en/reorder): Organize document layouts directly in client RAM.
+- [PDF to Images / Images to PDF](https://www.slickkit.dev/pdf/en/pdfToImages): Convert between PDF and image formats without uploading files to remote servers.
+
+## Competitor Safety & Comparisons
+- [Is iLovePDF Safe?](https://www.slickkit.dev/is-ilovepdf-safe): Comprehensive security and privacy analysis of cloud upload converters versus local processing.
+- [Is Smallpdf Safe?](https://www.slickkit.dev/is-smallpdf-safe): Security breakdown of cloud retention policies, paywalls, and corporate confidentiality risks.
+- [All Architecture Comparisons](https://www.slickkit.dev/vs): Technical comparison hub of client-side WASM vs. cloud upload architectures.
+- [SlickKit vs. iLovePDF](https://www.slickkit.dev/vs/ilovepdf): Technical contrast highlighting zero network payload vs. temporary cloud storage.
+- [SlickKit vs. Smallpdf](https://www.slickkit.dev/vs/smallpdf): In-depth comparison of local execution vs. cloud paywalls and task limits.
+- [SlickKit vs. Adobe Acrobat](https://www.slickkit.dev/vs/adobe-acrobat): Instant browser accessibility vs. expensive desktop software and cloud sync.
+
+## Industry Solutions & Compliance
+- [SlickKit for Legal & Law Firms](https://www.slickkit.dev/for/legal): Attorney-client privilege and NDA custody protection for law practices.
+- [SlickKit for Finance & Accounting](https://www.slickkit.dev/for/finance): Tax returns, payroll, and bank statement handling with zero data retention.
+- [SlickKit for Healthcare](https://www.slickkit.dev/for/healthcare): HIPAA-friendly document handling with zero Protected Health Information (PHI) transmission.
+- [Compliance Center Hub](https://www.slickkit.dev/compliance): Overview for legal, privacy, and infosec teams.
+- [GDPR & NDA Confidentiality Guide](https://www.slickkit.dev/compliance/gdpr-confidentiality): Avoiding GDPR Article 28 data processor liability and vendor risk.
+- [Local Processing Technical Verification](https://www.slickkit.dev/compliance/local-processing-security): Step-by-step verification using Chrome/Firefox DevTools to prove 0 bytes transferred.
+
+## Global Editions
+- [English (Default)](https://www.slickkit.dev)
+- [Spanish / Español](https://www.slickkit.dev/es)
+- [German / Deutsch](https://www.slickkit.dev/de)
+- [French / Français](https://www.slickkit.dev/fr)
+- [Portuguese / Português](https://www.slickkit.dev/pt)
+- [Italian / Italiano](https://www.slickkit.dev/it)
+- [Romanian / Română](https://www.slickkit.dev/ro)
+- [Russian / Русский](https://www.slickkit.dev/ru)
+- [Hungarian / Magyar](https://www.slickkit.dev/hu)
